@@ -1,0 +1,8 @@
+de:
+  BrokenExternalLink:
+    NOTAVAILABLE: 'Server nicht verfügbar'
+    PLURALNAME: 'Defekte externe Links'
+    SINGULARNAME: 'Defekter externer Link'
+    UNKNOWNRESPONSE: 'Unbekannter Antwortcode'
+  ExternalBrokenLinksReport:
+    RUNREPORT: 'Generiere neuen Bericht'
