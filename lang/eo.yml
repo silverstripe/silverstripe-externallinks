@@ -1,0 +1,17 @@
+eo:
+  BrokenExternalLink:
+    NOTAVAILABLE: 'Servilo estas neatingenbla'
+    PLURALNAME: 'Rompitaj eksteraj ligiloj'
+    SINGULARNAME: 'Rompita ekstera ligilo'
+    UNKNOWNRESPONSE: 'Nekonata respondokodo'
+  BrokenExternalPageTrack:
+    PLURALNAME: 'Rompitaj eksteraj paĝaj trakoj'
+    SINGULARNAME: 'Rompita ekstera paĝa trako'
+  BrokenExternalPageTrackStatus:
+    PLURALNAME: 'Stato de rompitaj eksteraj paĝaj trakoj'
+    SINGULARNAME: 'Stato de rompita ekstera paĝa trako'
+  CheckExternalLiksJob:
+    TITLE: 'Kontrolas por eksteraj rompitaj ligiloj'
+  ExternalBrokenLinksReport:
+    EXTERNALBROKENLINKS: 'Raporto pri eksteraj rompitaj ligiloj'
+    RUNREPORT: 'Krei novan raporton'
