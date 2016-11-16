@@ -1,0 +1,11 @@
+ru:
+  BrokenExternalLink:
+    NOTAVAILABLE: 'Сервер не доступен'
+    PLURALNAME: 'Недоступные внешние ссылки'
+    SINGULARNAME: 'Недоступная внешняя ссылка'
+    UNKNOWNRESPONSE: 'Неизвестный ответ сервера'
+  CheckExternalLiksJob:
+    TITLE: 'Проверяю внешние ссылки'
+  ExternalBrokenLinksReport:
+    EXTERNALBROKENLINKS: 'Отчёт о неработающих внешних ссылках'
+    RUNREPORT: 'Создать новый отчёт'
