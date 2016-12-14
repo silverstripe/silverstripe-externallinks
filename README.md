@@ -80,3 +80,24 @@ file in mysite/_config
         - 401
         - 403
         - 501
+
+## Follow 301 redirects ##
+
+You may want to follow a redirected URL a example of this would be redirecting from http to https
+can give you a false poitive as the http code of 301 will be returned which will be classed
+as a working link.
+
+To allow redirects to be followed setup the following config in your config.yml
+
+    # Follow 301 redirects
+    CurlLinkChecker:
+      FollowLocation: 1
+
+## Bypass cache ##
+
+By default the task will attempt to cache any results the cache can be bypassed with the
+following config in config.yml.
+
+    # Bypass SS_Cache
+    CurlLinkChecker:
+      BypassCache: 1

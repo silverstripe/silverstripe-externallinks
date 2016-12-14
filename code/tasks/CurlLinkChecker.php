@@ -28,22 +28,30 @@ class CurlLinkChecker implements LinkChecker {
 		// Skip non-external links
 		if(!preg_match('/^https?[^:]*:\/\//', $href)) return null;
 
-		// Check if we have a cached result
-		$cacheKey = md5($href);
-		$result = $this->getCache()->load($cacheKey);
-		if($result !== false) return $result;
+		if (!Config::inst()->get('CurlLinkChecker', 'BypassCache')) {
+			// Check if we have a cached result
+			$cacheKey = md5($href);
+			$result = $this->getCache()->load($cacheKey);
+			if($result !== false) return $result;
+		}
 
 		// No cached result so just request
 		$handle = curl_init($href);
 		curl_setopt($handle, CURLOPT_RETURNTRANSFER, TRUE);
+		// do we want to follow any redirect locations eg http to https
+		if (Config::inst()->get('CurlLinkChecker', 'FollowLocation')) {
+			curl_setopt($handle, CURLOPT_FOLLOWLOCATION, TRUE);
+		}
 		curl_setopt($handle, CURLOPT_CONNECTTIMEOUT, 5);
 		curl_setopt($handle, CURLOPT_TIMEOUT, 10);
 		curl_exec($handle);
 		$httpCode = curl_getinfo($handle, CURLINFO_HTTP_CODE);
 		curl_close($handle);
 
-		// Cache result
-		$this->getCache()->save($httpCode, $cacheKey);
+		if (!Config::inst()->get('CurlLinkChecker', 'BypassCache')) {
+			// Cache result
+			$this->getCache()->save($httpCode, $cacheKey);
+		}
 		return $httpCode;
 	}
 }
