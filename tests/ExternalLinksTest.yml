@@ -1,4 +1,4 @@
-ExternalLinksTest_Page:
+ExternalLinksTestPage:
   # Tests mix of broken and working external links
   page1:
     Title: 'Page 1'
@@ -18,7 +18,7 @@ ExternalLinksTest_Page:
     Content: >
       <p><a href="http://www.broken.com/url/thing" class="ss-broken">Still Broken</a></p>
     ExpectedContent: >
-      <p><a href="http://www.broken.com/url/thing" class="ss-broken">Still Broken</a></p>  
+      <p><a href="http://www.broken.com/url/thing" class="ss-broken">Still Broken</a></p>
   # Tests internal broken links not marking a page as broken
   page3:
     Title: 'Page 3'
