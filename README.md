@@ -1,6 +1,6 @@
 # External links
 
-[![Build Status](https://travis-ci.org/silverstripe-labs/silverstripe-externallinks.svg?branch=master)](https://travis-ci.org/silverstripe-labs/silverstripe-externallinks)
+[![Build Status](https://travis-ci.org/silverstripe/silverstripe-externallinks.svg?branch=master)](https://travis-ci.org/silverstripe/silverstripe-externallinks)
 
 ## Introduction
 
@@ -23,7 +23,7 @@ See the [changelog](CHANGELOG.md) for version history.
 
 ## Installation
 
- 1. If you have composer you can use `composer require silverstripe/externallinks:*`. Otherwise, 
+ 1. If you have composer you can use `composer require silverstripe/externallinks:*`. Otherwise,
     download the module from GitHub and extract to the 'externallinks' folder. Place this directory
     in your sites root directory. This is the one with framework and cms in it.
  2. Run in your browser - `/dev/build` to rebuild the database.
@@ -44,7 +44,7 @@ In this initial ajax request this module will do one of two things, depending on
 
 In either case, the background task will loop over every page in the system, inspecting all external urls and
 checking the status code returned by requesting each one. If a URL returns a response code that is considered
-"broken" (defined as < 200 or > 302) then the `ss-broken` css class will be assigned to that url, and 
+"broken" (defined as < 200 or > 302) then the `ss-broken` css class will be assigned to that url, and
 a line item will be added to the report. If a previously broken link has been corrected or fixed, then
 this class is removed.
 
