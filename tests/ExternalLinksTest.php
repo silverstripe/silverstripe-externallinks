@@ -5,8 +5,12 @@ class ExternalLinksTest extends SapphireTest {
 	protected static $fixture_file = 'ExternalLinksTest.yml';
 
 	protected $extraDataObjects = array(
-		'ExternalLinksTest_Page'
+		'ExternalLinksTestPage'
 	);
+
+    protected $illegalExtensions = array(
+        'SiteTree' => array('Translatable')
+    );
 
 	public function setUpOnce() {
 		if (class_exists('Phockito')) {
@@ -18,8 +22,6 @@ class ExternalLinksTest extends SapphireTest {
 
 	public function setUp() {
 		parent::setUp();
-
-		Injector::nest();
 
 		// Check dependencies
 		if (!class_exists('Phockito')) {
@@ -72,11 +74,6 @@ class ExternalLinksTest extends SapphireTest {
 		Injector::inst()->registerService($checker, 'LinkChecker');
 	}
 
-	public function tearDown() {
-		Injector::unnest();
-		parent::tearDown();
-	}
-
 	public function testLinks() {
 		// Run link checker
 		$task = CheckExternalLinksTask::create();
@@ -91,7 +88,7 @@ class ExternalLinksTest extends SapphireTest {
 
 		// Check all pages have had the correct HTML adjusted
 		for($i = 1; $i <= 5; $i++) {
-			$page = $this->objFromFixture('ExternalLinksTest_Page', 'page'.$i);
+			$page = $this->objFromFixture('ExternalLinksTestPage', 'page'.$i);
 			$this->assertNotEmpty($page->Content);
 			$this->assertEquals(
 				$page->ExpectedContent,
@@ -148,10 +145,4 @@ class ExternalLinksTest extends SapphireTest {
 		$this->assertContains('BrokenExternalLinksReport',$reportNames,
 			'BrokenExternalLinksReport is in reports list');
 	}
-}
-
-class ExternalLinksTest_Page extends Page implements TestOnly {
-	private static $db = array(
-		'ExpectedContent' => 'HTMLText'
-	);
 }
