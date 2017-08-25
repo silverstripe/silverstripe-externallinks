@@ -4,6 +4,12 @@ ru:
     PLURALNAME: 'Недоступные внешние ссылки'
     SINGULARNAME: 'Недоступная внешняя ссылка'
     UNKNOWNRESPONSE: 'Неизвестный ответ сервера'
+  BrokenExternalPageTrack:
+    PLURALNAME: 'Внешнее отслеживание страниц нарушено'
+    SINGULARNAME: 'Внешнее отслеживание страниц нарушено'
+  BrokenExternalPageTrackStatus:
+    PLURALNAME: 'Внешнее отслеживание страниц нарушено'
+    SINGULARNAME: 'Внешнее отслеживание страниц нарушено'
   CheckExternalLiksJob:
     TITLE: 'Проверяю внешние ссылки'
   ExternalBrokenLinksReport:
