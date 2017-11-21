@@ -1,7 +1,7 @@
 {
 	"name": "silverstripe/externallinks",
 	"description": "Adds tracking of external broken links to the SilverStripe CMS",
-	"type": "silverstripe-module",
+	"type": "silverstripe-vendormodule",
 	"keywords": ["silverstripe", "broken", "links", "href"],
 	"license": "BSD-3-Clause",
 	"authors": [
@@ -11,19 +11,18 @@
 		}
 	],
 	"require": {
-		"silverstripe/framework": "~3.1",
-		"silverstripe/cms": "~3.1"
+		"silverstripe/recipe-cms": "^1.0"
 	},
 	"require-dev": {
 		"hafriedlander/silverstripe-phockito": "*",
-		"phpunit/PHPUnit": "~3.7@stable"
+		"phpunit/PHPUnit": "^3.7"
 	},
 	"suggest": {
 		"silverstripe/queuedjobs": "Speeds up running the job for Content Editors fropm the report"
 	},
 	"extra": {
 		"branch-alias": {
-			"dev-master": "1.0.x-dev"
+			"dev-master": "2.0.x-dev"
 		}
 	}
 }
