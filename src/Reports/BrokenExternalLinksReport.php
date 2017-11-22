@@ -1,5 +1,15 @@
 <?php
 
+namespace SilverStripe\ExternalLinks\Reports;
+
+use SS_Report;
+use Convert;
+use BrokenExternalPageTrackStatus;
+use ArrayList;
+use Requirements;
+use LiteralField;
+
+
 /**
  * Content side-report listing pages with external broken links
  * @package externallinks

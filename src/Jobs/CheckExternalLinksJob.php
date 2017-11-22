@@ -1,5 +1,12 @@
 <?php
 
+namespace SilverStripe\ExternalLinks\Jobs;
+
+use AbstractQueuedJob;
+use QueuedJob;
+use CheckExternalLinksTask;
+
+
 if(!class_exists('AbstractQueuedJob')) return;
 
 /**

@@ -1,5 +1,10 @@
 <?php
 
+namespace SilverStripe\ExternalLinks\Tasks;
+
+use SS_Cache;
+
+
 /**
  * Check links using curl
  */

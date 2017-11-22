@@ -1,5 +1,11 @@
 <?php
 
+namespace SilverStripe\ExternalLinks\Model;
+
+use DataObject;
+use Versioned;
+
+
 /**
  * Represents a track for a single page
  */

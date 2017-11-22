@@ -1,5 +1,10 @@
 <?php
 
+namespace SilverStripe\ExternalLinks\Tasks;
+
+
+
+
 /**
  * Provides an interface for checking that a link is valid
  */

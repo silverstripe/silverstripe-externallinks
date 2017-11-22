@@ -1,5 +1,13 @@
 <?php
 
+namespace SilverStripe\ExternalLinks\Model;
+
+use DataObject;
+use Member;
+use Permission;
+use Config;
+
+
 /**
  * Represents a single link checked for a single run that is broken
  *

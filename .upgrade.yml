@@ -1,0 +1,10 @@
+mappings:
+  CMSExternalLinks_Controller: SilverStripe\ExternalLinks\Controllers\CMSExternalLinks_Controller
+  CheckExternalLinksJob: SilverStripe\ExternalLinks\Jobs\CheckExternalLinksJob
+  BrokenExternalLink: SilverStripe\ExternalLinks\Model\BrokenExternalLink
+  BrokenExternalPageTrack: SilverStripe\ExternalLinks\Model\BrokenExternalPageTrack
+  BrokenExternalPageTrackStatus: SilverStripe\ExternalLinks\Model\BrokenExternalPageTrackStatus
+  BrokenExternalLinksReport: SilverStripe\ExternalLinks\Reports\BrokenExternalLinksReport
+  CheckExternalLinksTask: SilverStripe\ExternalLinks\Tasks\CheckExternalLinksTask
+  CurlLinkChecker: SilverStripe\ExternalLinks\Tasks\CurlLinkChecker
+  LinkChecker: SilverStripe\ExternalLinks\Tasks\LinkChecker

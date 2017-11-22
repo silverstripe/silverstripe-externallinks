@@ -1,5 +1,11 @@
 <?php
 
+namespace SilverStripe\ExternalLinks\Model;
+
+use DataObject;
+use Versioned;
+
+
 /**
  * Represents the status of a track run
  *

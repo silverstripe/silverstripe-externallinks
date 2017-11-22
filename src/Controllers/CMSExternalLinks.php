@@ -1,5 +1,14 @@
 <?php
 
+namespace SilverStripe\ExternalLinks\Controllers;
+
+use Controller;
+use HTTP;
+use BrokenExternalPageTrackStatus;
+use CheckExternalLinksJob;
+use CheckExternalLinksTask;
+
+
 class CMSExternalLinks_Controller extends Controller {
 
 	private static $allowed_actions = array('getJobStatus', 'start');

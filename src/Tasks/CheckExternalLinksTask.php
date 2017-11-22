@@ -1,5 +1,18 @@
 <?php
 
+namespace SilverStripe\ExternalLinks\Tasks;
+
+use BuildTask;
+use Debug;
+use BrokenExternalPageTrack;
+use DOMNode;
+use BrokenExternalLink;
+use Config;
+use BrokenExternalPageTrackStatus;
+use Injector;
+use DB;
+
+
 class CheckExternalLinksTask extends BuildTask {
 
 	private static $dependencies = array(
