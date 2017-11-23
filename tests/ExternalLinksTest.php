@@ -1,5 +1,7 @@
 <?php
 
+namespace SilverStripe\ExternalLinks\Tests;
+
 use SilverStripe\ExternalLinks\Tasks\LinkChecker;
 use SilverStripe\Core\Injector\Injector;
 use SilverStripe\ExternalLinks\Tasks\CheckExternalLinksTask;

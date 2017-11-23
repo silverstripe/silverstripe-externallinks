@@ -8,7 +8,7 @@ use SilverStripe\ExternalLinks\Jobs\CheckExternalLinksJob;
 use SilverStripe\ExternalLinks\Tasks\CheckExternalLinksTask;
 use SilverStripe\Control\Controller;
 
-class CMSExternalLinks_Controller extends Controller
+class CMSExternalLinksController extends Controller
 {
 
     private static $allowed_actions = array('getJobStatus', 'start');
