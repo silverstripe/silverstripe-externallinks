@@ -10,23 +10,21 @@ use SilverStripe\i18n\i18n;
 use SilverStripe\Reports\Report;
 use SilverStripe\ExternalLinks\Reports\BrokenExternalLinksReport;
 use SilverStripe\Dev\SapphireTest;
+use SilverStripe\ExternalLinks\Tests\ExternalLinksTestPage;
+use Phockito;
 
 class ExternalLinksTest extends SapphireTest
 {
 
     protected static $fixture_file = 'ExternalLinksTest.yml';
 
-    protected $extraDataObjects = array(
-        'ExternalLinksTestPage'
-    );
-
-    protected $illegalExtensions = array(
-        'SiteTree' => array('Translatable')
+    protected static $extra_dataobjects = array(
+        ExternalLinksTestPage::class
     );
 
     public function setUpOnce()
     {
-        if (class_exists('Phockito')) {
+        if (class_exists(Phockito::class)) {
             Phockito::include_hamcrest(false);
         }
 
@@ -38,7 +36,7 @@ class ExternalLinksTest extends SapphireTest
         parent::setUp();
 
         // Check dependencies
-        if (!class_exists('Phockito')) {
+        if (!class_exists(Phockito::class)) {
             $this->skipTest = true;
             return $this->markTestSkipped("These tests need the Phockito module installed to run");
         }

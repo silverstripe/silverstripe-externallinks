@@ -18,6 +18,7 @@ use SilverStripe\ORM\DataObject;
  */
 class BrokenExternalPageTrackStatus extends DataObject
 {
+    private static $table_name = 'BrokenExternalPageTrackStatus';
 
     private static $db = array(
         'Status' => 'Enum("Completed, Running", "Running")',

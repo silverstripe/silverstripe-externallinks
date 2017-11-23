@@ -13,6 +13,7 @@ use SilverStripe\ORM\DataObject;
  */
 class BrokenExternalPageTrack extends DataObject
 {
+    private static $table_name = 'BrokenExternalPageTrack';
 
     private static $db = array(
         'Processed' => 'Boolean'

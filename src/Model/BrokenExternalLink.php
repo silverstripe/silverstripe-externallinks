@@ -18,6 +18,7 @@ use SilverStripe\ORM\DataObject;
  */
 class BrokenExternalLink extends DataObject
 {
+    private static $table_name = 'BrokenExternalLink';
 
     private static $db = array(
         'Link' => 'Varchar(2083)', // 2083 is the maximum length of a URL in Internet Explorer.
