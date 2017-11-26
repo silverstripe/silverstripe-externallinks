@@ -33,7 +33,7 @@ class BrokenExternalPageTrackStatus extends DataObject
     /**
      * Get the latest track status
      *
-     * @return self
+     * @return BrokenExternalPageTrackStatus
      */
     public static function get_latest()
     {
@@ -72,6 +72,8 @@ class BrokenExternalPageTrackStatus extends DataObject
 
     /**
      * Get total pages count
+     *
+     * @return int
      */
     public function getTotalPages()
     {
@@ -80,6 +82,8 @@ class BrokenExternalPageTrackStatus extends DataObject
 
     /**
      * Get completed pages count
+     *
+     * @return int
      */
     public function getCompletedPages()
     {
@@ -92,7 +96,7 @@ class BrokenExternalPageTrackStatus extends DataObject
     /**
      * Returns the latest run, or otherwise creates a new one
      *
-     * @return self
+     * @return BrokenExternalPageTrackStatus
      */
     public static function get_or_create()
     {
@@ -106,10 +110,10 @@ class BrokenExternalPageTrackStatus extends DataObject
         return self::create_status();
     }
 
-    /*
+    /**
 	 * Create and prepare a new status
 	 *
-	 * @return self
+	 * @return BrokenExternalPageTrackStatus
 	 */
     public static function create_status()
     {

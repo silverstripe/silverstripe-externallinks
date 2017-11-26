@@ -31,7 +31,7 @@ class ExternalLinksTest extends SapphireTest
         parent::setUpOnce();
     }
 
-    public function setUp()
+    protected function setUp()
     {
         parent::setUp();
 
@@ -101,7 +101,7 @@ class ExternalLinksTest extends SapphireTest
 
         // Check all pages have had the correct HTML adjusted
         for ($i = 1; $i <= 5; $i++) {
-            $page = $this->objFromFixture('ExternalLinksTestPage', 'page'.$i);
+            $page = $this->objFromFixture(ExternalLinksTestPage::class, 'page'.$i);
             $this->assertNotEmpty($page->Content);
             $this->assertEquals(
                 $page->ExpectedContent,
@@ -154,7 +154,7 @@ class ExternalLinksTest extends SapphireTest
         $reports = Report::get_reports();
         $reportNames = array();
         foreach ($reports as $report) {
-            $reportNames[] = $report->class;
+            $reportNames[] = get_class($report);
         }
         $this->assertContains(
             BrokenExternalLinksReport::class,

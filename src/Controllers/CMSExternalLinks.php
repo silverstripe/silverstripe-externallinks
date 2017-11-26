@@ -7,13 +7,14 @@ use SilverStripe\ExternalLinks\Model\BrokenExternalPageTrackStatus;
 use SilverStripe\ExternalLinks\Jobs\CheckExternalLinksJob;
 use SilverStripe\ExternalLinks\Tasks\CheckExternalLinksTask;
 use SilverStripe\Control\Controller;
+use Symbiote\QueuedJobs\Services\QueuedJobService;
 
 class CMSExternalLinksController extends Controller
 {
 
     private static $allowed_actions = array('getJobStatus', 'start');
 
-    /*
+    /**
 	 * Respond to Ajax requests for info on a running job
 	 *
 	 * @return string JSON string detailing status of the job
@@ -41,7 +42,7 @@ class CMSExternalLinksController extends Controller
     }
 
 
-    /*
+    /**
 	 * Starts a broken external link check
 	 */
     public function start()
@@ -53,11 +54,11 @@ class CMSExternalLinksController extends Controller
         }
 
         // Create a new job
-        if (class_exists('QueuedJobService')) {
+        if (class_exists(QueuedJobService::class)) {
             // Force the creation of a new run
             BrokenExternalPageTrackStatus::create_status();
             $checkLinks = new CheckExternalLinksJob();
-            singleton('QueuedJobService')->queueJob($checkLinks);
+            singleton(QueuedJobService::class)->queueJob($checkLinks);
         } else {
             //TODO this hangs as it waits for the connection to be released
             // should return back and continue processing

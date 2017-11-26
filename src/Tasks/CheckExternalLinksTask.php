@@ -137,7 +137,7 @@ class CheckExternalLinksTask extends BuildTask
         }
 
         // do we have any whitelisted codes
-        $ignoreCodes = Config::inst()->get('CheckExternalLinks', 'IgnoreCodes');
+        $ignoreCodes = $this->config()->get('IgnoreCodes');
         if (is_array($ignoreCodes) && in_array($httpCode, $ignoreCodes)) {
             return false;
         }

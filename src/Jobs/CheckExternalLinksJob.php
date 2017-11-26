@@ -19,7 +19,7 @@ class CheckExternalLinksJob extends AbstractQueuedJob implements QueuedJob
 
     public function getTitle()
     {
-        return _t('CheckExternalLiksJob.TITLE', 'Checking for external broken links');
+        return _t(__CLASS__ . '.TITLE', 'Checking for external broken links');
     }
 
     public function getJobType()

@@ -1,5 +1,9 @@
 ---
 Name: externallinksdependencies
 ---
-Injector:
-  LinkChecker: CurlLinkChecker
+SilverStripe\Core\Injector\Injector:
+  LinkChecker: SilverStripe\ExternalLinks\Tasks\CurlLinkChecker
+  Psr\SimpleCache\CacheInterface.CurlLinkChecker:
+    factory: SilverStripe\Core\Cache\CacheFactory
+    constructor:
+      namespace: 'curllinkchecker'

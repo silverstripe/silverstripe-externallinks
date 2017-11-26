@@ -12,7 +12,6 @@ use SilverStripe\Reports\Report;
 /**
  * Content side-report listing pages with external broken links
  * @package externallinks
- * @subpackage content
  */
 
 class BrokenExternalLinksReport extends Report
@@ -25,7 +24,7 @@ class BrokenExternalLinksReport extends Report
      */
     public function title()
     {
-        return _t('ExternalBrokenLinksReport.EXTERNALBROKENLINKS', "External broken links report");
+        return _t(__CLASS__ . '.EXTERNALBROKENLINKS', "External broken links report");
     }
 
     public function columns()
@@ -78,7 +77,7 @@ class BrokenExternalLinksReport extends Report
 
     public function getCMSFields()
     {
-        Requirements::javascript('externallinks/javascript/BrokenExternalLinksReport.js');
+        Requirements::javascript('silverstripe/externallinks: javascript/BrokenExternalLinksReport.js');
         $fields = parent::getCMSFields();
 
         $reportResultSpan = '</ br></ br><h3 id="ReportHolder"></h3>';
@@ -90,7 +89,7 @@ class BrokenExternalLinksReport extends Report
             'runReport',
             sprintf(
                 $button,
-                _t('ExternalBrokenLinksReport.RUNREPORT', 'Create new report')
+                _t(__CLASS__ . '.RUNREPORT', 'Create new report')
             )
         );
         $fields->push($runReportButton);
