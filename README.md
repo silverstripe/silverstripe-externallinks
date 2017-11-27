@@ -25,10 +25,8 @@ The external links module is a task and ModelAdmin to track and to report on bro
 
 ## Installation
 
- 1. If you have composer you can use `composer require silverstripe/externallinks:*`. Otherwise,
-    download the module from GitHub and extract to the 'externallinks' folder. Place this directory
-    in your sites root directory. This is the one with framework and cms in it.
- 2. Run in your browser - `/dev/build` to rebuild the database.
+ 1. Require the module via composer: `composer require silverstripe/externallinks`
+ 2. Run `/dev/build` in your browser to rebuild the database.
  3. Run the following task *http://path.to.silverstripe/dev/tasks/CheckExternalLinks* to check for
     broken external links
 
@@ -73,7 +71,7 @@ If you want to ignore or whitelist certain http codes this can be setup via Igno
 file in `mysite/_config`
 
 ```yml
-    CheckExternalLinks:
+    SilverStripe\ExternalLinks\Tasks\CheckExternalLinksTask:
       IgnoreCodes:
         - 401
         - 403
