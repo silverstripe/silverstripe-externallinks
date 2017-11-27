@@ -2,13 +2,12 @@
 
 namespace SilverStripe\ExternalLinks\Model;
 
+use SilverStripe\Control\HTTPResponse;
 use SilverStripe\ExternalLinks\Model\BrokenExternalPageTrack;
 use SilverStripe\ExternalLinks\Model\BrokenExternalPageTrackStatus;
-use SilverStripe\Security\Member;
-use SilverStripe\Security\Permission;
-use SilverStripe\Core\Config\Config;
-use SilverStripe\Control\HTTPResponse;
 use SilverStripe\ORM\DataObject;
+use SilverStripe\Security\Permission;
+use SilverStripe\Security\Security;
 
 /**
  * Represents a single link checked for a single run that is broken
@@ -56,7 +55,7 @@ class BrokenExternalLink extends DataObject
 
     public function canView($member = false)
     {
-        $member = $member ? $member : Member::currentUser();
+        $member = $member ? $member : Security::getCurrentUser();
         $codes = array('content-authors', 'administrators');
         return Permission::checkMember($member, $codes);
     }

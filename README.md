@@ -30,7 +30,7 @@ The external links module is a task and ModelAdmin to track and to report on bro
  3. Run the following task *http://path.to.silverstripe/dev/tasks/CheckExternalLinks* to check for
     broken external links
 
-## Report ##
+## Report
 
 A new report is added called 'External Broken links report'. When viewing this report, a user may press
 the "Create new report" button which will trigger an ajax request to initiate a report run.
@@ -56,24 +56,30 @@ with the status. The user may leave this page and return to it later to view the
 
 Any subsequent report may not be generated until a prior report has completed.
 
-## Dev task ##
+## Dev task
 
 Run the following task *http://path.to.silverstripe/dev/tasks/CheckExternalLinks* to check your site for external
 broken links.
 
-## Queued job ##
+## Queued job
 
 If you have the queuedjobs module installed you can set the task to be run every so often.
 
-## Whitelisting codes ##
+## Whitelisting codes
 
-If you want to ignore or whitelist certain http codes this can be setup via IgnoreCodes in the config.yml
-file in `mysite/_config`
+If you want to ignore or whitelist certain HTTP codes this can be setup via `ignore_codes` in the config.yml
+file in `mysite/_config`:
 
 ```yml
-    SilverStripe\ExternalLinks\Tasks\CheckExternalLinksTask:
-      IgnoreCodes:
-        - 401
-        - 403
-        - 501
+SilverStripe\ExternalLinks\Tasks\CheckExternalLinksTask:
+  ignore_codes:
+    - 401
+    - 403
+    - 501
 ```
+
+## Upgrading from 1.x to 2.x
+
+When upgrading from 1.x to 2.x (SilverStripe 3.x to 4.x) you will need to be aware of the following API changes:
+
+ * Configuration property `CheckExternalLinksTask.IgnoreCodes` renamed to `CheckExternalLinksTask.ignore_codes`
