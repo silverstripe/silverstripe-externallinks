@@ -1,29 +1,34 @@
 {
-	"name": "silverstripe/externallinks",
-	"description": "Adds tracking of external broken links to the SilverStripe CMS",
-	"type": "silverstripe-module",
-	"keywords": ["silverstripe", "broken", "links", "href"],
-	"license": "BSD-3-Clause",
-	"authors": [
-		{
-			"name": "Kirk Mayo",
-			"email": "kirk@silverstripe.com"
-		}
-	],
-	"require": {
-		"silverstripe/framework": "~3.1",
-		"silverstripe/cms": "~3.1"
-	},
-	"require-dev": {
-		"hafriedlander/silverstripe-phockito": "*",
-		"phpunit/PHPUnit": "~3.7@stable"
-	},
-	"suggest": {
-		"silverstripe/queuedjobs": "Speeds up running the job for Content Editors fropm the report"
-	},
-	"extra": {
-		"branch-alias": {
-			"dev-master": "1.0.x-dev"
-		}
-	}
+    "name": "silverstripe/externallinks",
+    "description": "Adds tracking of external broken links to the SilverStripe CMS",
+    "type": "silverstripe-module",
+    "keywords": [
+        "silverstripe",
+        "broken",
+        "links",
+        "href"
+    ],
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "Kirk Mayo",
+            "email": "kirk@silverstripe.com"
+        }
+    ],
+    "require": {
+        "silverstripe/framework": "~3.1",
+        "silverstripe/cms": "~3.1"
+    },
+    "require-dev": {
+        "hafriedlander/silverstripe-phockito": "*",
+        "phpunit/PHPUnit": "~3.7@stable"
+    },
+    "suggest": {
+        "silverstripe/queuedjobs": "Speeds up running the job for Content Editors fropm the report"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.x-dev"
+        }
+    }
 }
