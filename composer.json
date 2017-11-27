@@ -26,5 +26,9 @@
     "suggest": {
         "silverstripe/queuedjobs": "Speeds up running the job for Content Editors fropm the report"
     },
-    "extra": []
+    "extra": {
+        "branch-alias": {
+            "1.x-dev": "1.1.x-dev"
+        }
+    }
 }
