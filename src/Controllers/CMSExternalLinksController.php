@@ -12,13 +12,16 @@ use Symbiote\QueuedJobs\Services\QueuedJobService;
 class CMSExternalLinksController extends Controller
 {
 
-    private static $allowed_actions = array('getJobStatus', 'start');
+    private static $allowed_actions = [
+        'getJobStatus',
+        'start'
+    ];
 
     /**
-	 * Respond to Ajax requests for info on a running job
-	 *
-	 * @return string JSON string detailing status of the job
-	 */
+     * Respond to Ajax requests for info on a running job
+     *
+     * @return string JSON string detailing status of the job
+     */
     public function getJobStatus()
     {
         // Set headers
@@ -32,19 +35,19 @@ class CMSExternalLinksController extends Controller
         // Format status
         $track = BrokenExternalPageTrackStatus::get_latest();
         if ($track) {
-            return json_encode(array(
-            'TrackID' => $track->ID,
-            'Status' => $track->Status,
-            'Completed' => $track->getCompletedPages(),
-            'Total' => $track->getTotalPages()
-            ));
+            return json_encode([
+                'TrackID' => $track->ID,
+                'Status' => $track->Status,
+                'Completed' => $track->getCompletedPages(),
+                'Total' => $track->getTotalPages()
+            ]);
         }
     }
 
 
     /**
-	 * Starts a broken external link check
-	 */
+     * Starts a broken external link check
+     */
     public function start()
     {
         // return if the a job is already running

@@ -2,16 +2,16 @@
 
 namespace SilverStripe\ExternalLinks\Tests;
 
-use SilverStripe\ExternalLinks\Tasks\LinkChecker;
-use SilverStripe\Core\Injector\Injector;
-use SilverStripe\ExternalLinks\Tasks\CheckExternalLinksTask;
-use SilverStripe\ExternalLinks\Model\BrokenExternalPageTrackStatus;
-use SilverStripe\i18n\i18n;
-use SilverStripe\Reports\Report;
 use SilverStripe\ExternalLinks\Reports\BrokenExternalLinksReport;
-use SilverStripe\Dev\SapphireTest;
+use SilverStripe\ExternalLinks\Model\BrokenExternalPageTrackStatus;
+use SilverStripe\ExternalLinks\Tasks\CheckExternalLinksTask;
 use SilverStripe\ExternalLinks\Tests\ExternalLinksTestPage;
-use Phockito;
+use SilverStripe\i18n\i18n;
+use SilverStripe\Core\Injector\Injector;
+use SilverStripe\ExternalLinks\Tasks\LinkChecker;
+use SilverStripe\ExternalLinks\Tests\Stubs\PretendLinkChecker;
+use SilverStripe\Reports\Report;
+use SilverStripe\Dev\SapphireTest;
 
 class ExternalLinksTest extends SapphireTest
 {
@@ -22,67 +22,12 @@ class ExternalLinksTest extends SapphireTest
         ExternalLinksTestPage::class
     );
 
-    public function setUpOnce()
-    {
-        if (class_exists(Phockito::class)) {
-            Phockito::include_hamcrest(false);
-        }
-
-        parent::setUpOnce();
-    }
-
     protected function setUp()
     {
         parent::setUp();
 
-        // Check dependencies
-        if (!class_exists(Phockito::class)) {
-            $this->skipTest = true;
-            return $this->markTestSkipped("These tests need the Phockito module installed to run");
-        }
-
-        // Mock link checker
-        $checker = Phockito::mock(LinkChecker::class);
-        Phockito::when($checker)
-            ->checkLink('http://www.working.com')
-            ->return(200);
-
-        Phockito::when($checker)
-            ->checkLink('http://www.broken.com/url/thing') // 404 on working site
-            ->return(404);
-
-        Phockito::when($checker)
-            ->checkLink('http://www.broken.com') // 403 on working site
-            ->return(403);
-
-        Phockito::when($checker)
-            ->checkLink('http://www.nodomain.com') // no ping
-            ->return(0);
-
-        Phockito::when($checker)
-            ->checkLink('/internal/link')
-            ->return(null);
-
-        Phockito::when($checker)
-            ->checkLink('[sitetree_link,id=9999]')
-            ->return(null);
-
-        Phockito::when($checker)
-            ->checkLink('home')
-            ->return(null);
-
-        Phockito::when($checker)
-            ->checkLink('broken-internal')
-            ->return(null);
-
-        Phockito::when($checker)
-            ->checkLink('[sitetree_link,id=1]')
-            ->return(null);
-
-        Phockito::when($checker)
-            ->checkLink(Hamcrest_Matchers::anything()) // anything else is 404
-            ->return(404);
-
+        // Stub link checker
+        $checker = new PretendLinkChecker;
         Injector::inst()->registerService($checker, LinkChecker::class);
     }
 

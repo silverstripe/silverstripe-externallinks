@@ -69,16 +69,17 @@ class BrokenExternalLink extends DataObject
     public function getHTTPCodeDescription()
     {
         $code = $this->HTTPCode;
-        if (empty($code)) {
+
+        try {
+            $response = HTTPResponse::create('', $code);
             // Assume that $code = 0 means there was no response
-            $description = _t(__CLASS__ . '.NOTAVAILABLE', 'Server Not Available');
-        } elseif (($descriptions = Config::inst()->get(HTTPResponse::class, 'status_codes'))
-            && isset($descriptions[$code])
-        ) {
-            $description = $descriptions[$code];
-        } else {
+            $description = $code ?
+                $response->getStatusDescription() :
+                _t(__CLASS__ . '.NOTAVAILABLE', 'Server Not Available');
+        } catch (InvalidArgumentException $e) {
             $description = _t(__CLASS__ . '.UNKNOWNRESPONSE', 'Unknown Response Code');
         }
+
         return sprintf("%d (%s)", $code, $description);
     }
 }

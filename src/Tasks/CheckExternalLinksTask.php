@@ -2,27 +2,23 @@
 
 namespace SilverStripe\ExternalLinks\Tasks;
 
-use DOMNode;
-
-
-
-
-
-use SilverStripe\Dev\Debug;
-use SilverStripe\ExternalLinks\Model\BrokenExternalPageTrack;
 use SilverStripe\ExternalLinks\Model\BrokenExternalLink;
-use SilverStripe\Core\Config\Config;
+use SilverStripe\ExternalLinks\Model\BrokenExternalPageTrack;
 use SilverStripe\ExternalLinks\Model\BrokenExternalPageTrackStatus;
-use SilverStripe\Core\Injector\Injector;
-use SilverStripe\ORM\DB;
 use SilverStripe\Dev\BuildTask;
+use SilverStripe\Core\Config\Config;
+use SilverStripe\ORM\DB;
+use SilverStripe\Dev\Debug;
+use DOMNode;
+use SilverStripe\Core\Injector\Injector;
+use SilverStripe\ExternalLinks\Tasks\LinkChecker;
 
 class CheckExternalLinksTask extends BuildTask
 {
 
-    private static $dependencies = array(
-        'LinkChecker' => '%$LinkChecker'
-    );
+    private static $dependencies = [
+        'LinkChecker' => '%$' . LinkChecker::class
+    ];
 
     /**
      * @var bool

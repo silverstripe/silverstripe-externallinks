@@ -111,10 +111,10 @@ class BrokenExternalPageTrackStatus extends DataObject
     }
 
     /**
-	 * Create and prepare a new status
-	 *
-	 * @return BrokenExternalPageTrackStatus
-	 */
+     * Create and prepare a new status
+     *
+     * @return BrokenExternalPageTrackStatus
+     */
     public static function create_status()
     {
         // If the script is to be started create a new status

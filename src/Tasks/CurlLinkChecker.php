@@ -3,6 +3,7 @@
 namespace SilverStripe\ExternalLinks\Tasks;
 
 use Psr\SimpleCache\CacheInterface;
+use SilverStripe\Core\Injector\Injector;
 
 /**
  * Check links using curl
