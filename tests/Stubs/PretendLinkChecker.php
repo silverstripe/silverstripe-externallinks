@@ -1,9 +1,10 @@
 <?php
 namespace SilverStripe\ExternalLinks\Tests\Stubs;
 
+use SilverStripe\Dev\TestOnly;
 use SilverStripe\ExternalLinks\Tasks\LinkChecker;
 
-class PretendLinkChecker implements LinkChecker
+class PretendLinkChecker implements LinkChecker, TestOnly
 {
     public function checkLink($href)
     {

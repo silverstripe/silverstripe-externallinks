@@ -1,9 +1,9 @@
 <?php
 
-namespace SilverStripe\ExternalLinks\Tests;
+namespace SilverStripe\ExternalLinks\Tests\Stubs;
 
-use SilverStripe\Dev\TestOnly;
 use Page;
+use SilverStripe\Dev\TestOnly;
 
 class ExternalLinksTestPage extends Page implements TestOnly
 {
