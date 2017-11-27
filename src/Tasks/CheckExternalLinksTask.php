@@ -7,11 +7,13 @@ use SilverStripe\ExternalLinks\Model\BrokenExternalPageTrack;
 use SilverStripe\ExternalLinks\Model\BrokenExternalPageTrackStatus;
 use SilverStripe\Dev\BuildTask;
 use SilverStripe\Core\Config\Config;
+use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\DB;
 use SilverStripe\Dev\Debug;
 use DOMNode;
 use SilverStripe\Core\Injector\Injector;
 use SilverStripe\ExternalLinks\Tasks\LinkChecker;
+use SilverStripe\CMS\Model\SiteTree;
 
 class CheckExternalLinksTask extends BuildTask
 {
@@ -188,9 +190,11 @@ class CheckExternalLinksTask extends BuildTask
             $count = $pageTrack->BrokenLinks()->count();
             $this->log("Found {$count} broken links");
             if ($count) {
+                $siteTreeTable = DataObject::getSchema()->tableName(SiteTree::class);
                 // Bypass the ORM as syncLinkTracking does not allow you to update HasBrokenLink to true
                 DB::query(sprintf(
-                    'UPDATE "SiteTree" SET "HasBrokenLink" = 1 WHERE "ID" = \'%d\'',
+                    'UPDATE "%s" SET "HasBrokenLink" = 1 WHERE "ID" = \'%d\'',
+                    $siteTreeTable,
                     intval($pageTrack->ID)
                 ));
             }
