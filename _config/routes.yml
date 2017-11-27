@@ -1,7 +1,7 @@
 ---
-Name: externallink
-After: framework/routes
+Name: externallinkroutes
+Before: '#adminroutes'
 ---
-Director:
+SilverStripe\Control\Director:
   rules:
-    'admin/externallinks//$Action': 'CMSExternalLinks_Controller'
+    'admin/externallinks//$Action': SilverStripe\ExternalLinks\Controllers\CMSExternalLinksController

@@ -1,6 +1,8 @@
 # External links
 
-[![Build Status](https://travis-ci.org/silverstripe/silverstripe-externallinks.svg?branch=master)](https://travis-ci.org/silverstripe/silverstripe-externallinks)
+[![Build Status](http://img.shields.io/travis/silverstripe/silverstripe-externallinks.svg?style=flat)](https://travis-ci.org/silverstripe/silverstripe-externallinks)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/silverstripe/silverstripe-externallinks/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/silverstripe/silverstripe-externallinks/?branch=master)
+[![codecov](https://codecov.io/gh/silverstripe/silverstripe-externallinks/branch/master/graph/badge.svg)](https://codecov.io/gh/silverstripe/silverstripe-externallinks)
 
 ## Introduction
 
@@ -12,21 +14,19 @@ The external links module is a task and ModelAdmin to track and to report on bro
 
 ## Requirements
 
-	* SilverStripe 3.1 +
+* SilverStripe ^4.0
+
+**Note:** For a SilverStripe 3.x compatible version, please use [the 1.x release line](https://github.com/silverstripe/silverstripe-externallinks/tree/1.0).
 
 ## Features
 
 * Add external links to broken links reports
 * Add a task to track external broken links
 
-See the [changelog](CHANGELOG.md) for version history.
-
 ## Installation
 
- 1. If you have composer you can use `composer require silverstripe/externallinks:*`. Otherwise,
-    download the module from GitHub and extract to the 'externallinks' folder. Place this directory
-    in your sites root directory. This is the one with framework and cms in it.
- 2. Run in your browser - `/dev/build` to rebuild the database.
+ 1. Require the module via composer: `composer require silverstripe/externallinks`
+ 2. Run `/dev/build` in your browser to rebuild the database.
  3. Run the following task *http://path.to.silverstripe/dev/tasks/CheckExternalLinks* to check for
     broken external links
 
@@ -63,20 +63,17 @@ broken links.
 
 ## Queued job ##
 
-If you have the queuedjobs module installed you can set the task to be run every so ofter
-Add the following yml config to config.yml in mysite/_config have the the task run once every day (86400 seconds)
-
-    CheckExternalLinks:
-      Delay: 86400
+If you have the queuedjobs module installed you can set the task to be run every so often.
 
 ## Whitelisting codes ##
 
 If you want to ignore or whitelist certain http codes this can be setup via IgnoreCodes in the config.yml
-file in mysite/_config
+file in `mysite/_config`
 
-    CheckExternalLinks:
-      Delay: 60
+```yml
+    SilverStripe\ExternalLinks\Tasks\CheckExternalLinksTask:
       IgnoreCodes:
         - 401
         - 403
         - 501
+```

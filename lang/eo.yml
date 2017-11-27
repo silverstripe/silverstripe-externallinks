@@ -1,17 +1,17 @@
 eo:
-  BrokenExternalLink:
+  SilverStripe\ExternalLinks\Model\BrokenExternalLink:
     NOTAVAILABLE: 'Servilo estas neatingenbla'
     PLURALNAME: 'Rompitaj eksteraj ligiloj'
     SINGULARNAME: 'Rompita ekstera ligilo'
     UNKNOWNRESPONSE: 'Nekonata respondokodo'
-  BrokenExternalPageTrack:
+  SilverStripe\ExternalLinks\Model\BrokenExternalPageTrack:
     PLURALNAME: 'Rompitaj eksteraj paĝaj trakoj'
     SINGULARNAME: 'Rompita ekstera paĝa trako'
-  BrokenExternalPageTrackStatus:
+  SilverStripe\ExternalLinks\Model\BrokenExternalPageTrackStatus:
     PLURALNAME: 'Stato de rompitaj eksteraj paĝaj trakoj'
     SINGULARNAME: 'Stato de rompita ekstera paĝa trako'
-  CheckExternalLiksJob:
+  SilverStripe\ExternalLinks\Jobs\CheckExternalLinksJob:
     TITLE: 'Kontrolas por eksteraj rompitaj ligiloj'
-  ExternalBrokenLinksReport:
+  SilverStripe\ExternalLinks\Reports\BrokenExternalLinksReport:
     EXTERNALBROKENLINKS: 'Raporto pri eksteraj rompitaj ligiloj'
     RUNREPORT: 'Krei novan raporton'

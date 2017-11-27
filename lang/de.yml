@@ -1,8 +1,8 @@
 de:
-  BrokenExternalLink:
+  SilverStripe\ExternalLinks\Model\BrokenExternalLink:
     NOTAVAILABLE: 'Server nicht verfügbar'
     PLURALNAME: 'Defekte externe Links'
     SINGULARNAME: 'Defekter externer Link'
     UNKNOWNRESPONSE: 'Unbekannter Antwortcode'
-  ExternalBrokenLinksReport:
+  SilverStripe\ExternalLinks\Reports\BrokenExternalLinksReport:
     RUNREPORT: 'Generiere neuen Bericht'

@@ -1,17 +1,17 @@
 pl:
-  BrokenExternalLink:
+  SilverStripe\ExternalLinks\Model\BrokenExternalLink:
     NOTAVAILABLE: 'Serwer niedostępny'
     PLURALNAME: 'Uszkodzone linki zewnętrzne'
     SINGULARNAME: 'Uszkodzony link zewnętrzny'
     UNKNOWNRESPONSE: 'Nieznany kod odpowiedzi'
-  BrokenExternalPageTrack:
+  SilverStripe\ExternalLinks\Model\BrokenExternalPageTrack:
     PLURALNAME: 'Wykrywania wadliwych stron zewnętrznych'
     SINGULARNAME: 'Wykrywanie wadliwych stron zewnętrznych'
-  BrokenExternalPageTrackStatus:
+  SilverStripe\ExternalLinks\Model\BrokenExternalPageTrackStatus:
     PLURALNAME: 'Statusy wykrywania wadliwych stron zewnętrznych'
     SINGULARNAME: 'Status wykrywania wadliwych stron zewnętrznych'
-  CheckExternalLiksJob:
+  SilverStripe\ExternalLinks\Jobs\CheckExternalLinksJob:
     TITLE: 'Wyszukiwanie uszkodzonych linków zewnętrznych'
-  ExternalBrokenLinksReport:
+  SilverStripe\ExternalLinks\Reports\BrokenExternalLinksReport:
     EXTERNALBROKENLINKS: 'Raport uszkodzonych linków zewnętrznych'
     RUNREPORT: 'Stwórz nowy raport'
