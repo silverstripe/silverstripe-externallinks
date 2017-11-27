@@ -2,25 +2,35 @@
 
 namespace SilverStripe\ExternalLinks\Tasks;
 
+use DOMNode;
+use SilverStripe\CMS\Model\SiteTree;
+use SilverStripe\Core\Config\Config;
+use SilverStripe\Core\Injector\Injector;
+use SilverStripe\Dev\BuildTask;
+use SilverStripe\Dev\Debug;
 use SilverStripe\ExternalLinks\Model\BrokenExternalLink;
 use SilverStripe\ExternalLinks\Model\BrokenExternalPageTrack;
 use SilverStripe\ExternalLinks\Model\BrokenExternalPageTrackStatus;
-use SilverStripe\Dev\BuildTask;
-use SilverStripe\Core\Config\Config;
+use SilverStripe\ExternalLinks\Tasks\LinkChecker;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\DB;
-use SilverStripe\Dev\Debug;
-use DOMNode;
-use SilverStripe\Core\Injector\Injector;
-use SilverStripe\ExternalLinks\Tasks\LinkChecker;
-use SilverStripe\CMS\Model\SiteTree;
 
 class CheckExternalLinksTask extends BuildTask
 {
-
     private static $dependencies = [
         'LinkChecker' => '%$' . LinkChecker::class
     ];
+
+    private static $segment = 'CheckExternalLinksTask';
+
+    /**
+     * Define a list of HTTP response codes that should not be treated as "broken", where they usually
+     * might be.
+     *
+     * @config
+     * @var array
+     */
+    private static $ignore_codes = [];
 
     /**
      * @var bool
@@ -135,7 +145,7 @@ class CheckExternalLinksTask extends BuildTask
         }
 
         // do we have any whitelisted codes
-        $ignoreCodes = $this->config()->get('IgnoreCodes');
+        $ignoreCodes = $this->config()->get('ignore_codes');
         if (is_array($ignoreCodes) && in_array($httpCode, $ignoreCodes)) {
             return false;
         }
