@@ -1,4 +1,4 @@
-SilverStripe\ExternalLinks\Tests\ExternalLinksTestPage:
+SilverStripe\ExternalLinks\Tests\Stubs\ExternalLinksTestPage:
   # Tests mix of broken and working external links
   page1:
     Title: 'Page 1'

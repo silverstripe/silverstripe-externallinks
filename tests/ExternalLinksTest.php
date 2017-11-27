@@ -2,16 +2,16 @@
 
 namespace SilverStripe\ExternalLinks\Tests;
 
-use SilverStripe\ExternalLinks\Reports\BrokenExternalLinksReport;
-use SilverStripe\ExternalLinks\Model\BrokenExternalPageTrackStatus;
-use SilverStripe\ExternalLinks\Tasks\CheckExternalLinksTask;
-use SilverStripe\ExternalLinks\Tests\ExternalLinksTestPage;
-use SilverStripe\i18n\i18n;
 use SilverStripe\Core\Injector\Injector;
-use SilverStripe\ExternalLinks\Tasks\LinkChecker;
-use SilverStripe\ExternalLinks\Tests\Stubs\PretendLinkChecker;
-use SilverStripe\Reports\Report;
 use SilverStripe\Dev\SapphireTest;
+use SilverStripe\ExternalLinks\Model\BrokenExternalPageTrackStatus;
+use SilverStripe\ExternalLinks\Reports\BrokenExternalLinksReport;
+use SilverStripe\ExternalLinks\Tasks\CheckExternalLinksTask;
+use SilverStripe\ExternalLinks\Tasks\LinkChecker;
+use SilverStripe\ExternalLinks\Tests\Stubs\ExternalLinksTestPage;
+use SilverStripe\ExternalLinks\Tests\Stubs\PretendLinkChecker;
+use SilverStripe\i18n\i18n;
+use SilverStripe\Reports\Report;
 
 class ExternalLinksTest extends SapphireTest
 {
