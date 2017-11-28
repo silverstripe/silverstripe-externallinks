@@ -3,6 +3,7 @@
 namespace SilverStripe\ExternalLinks\Controllers;
 
 use SilverStripe\Control\HTTP;
+use SilverStripe\Core\Convert;
 use SilverStripe\ExternalLinks\Model\BrokenExternalPageTrackStatus;
 use SilverStripe\ExternalLinks\Jobs\CheckExternalLinksJob;
 use SilverStripe\ExternalLinks\Tasks\CheckExternalLinksTask;
@@ -35,7 +36,7 @@ class CMSExternalLinksController extends Controller
         // Format status
         $track = BrokenExternalPageTrackStatus::get_latest();
         if ($track) {
-            return json_encode([
+            return Convert::array2json([
                 'TrackID' => $track->ID,
                 'Status' => $track->Status,
                 'Completed' => $track->getCompletedPages(),
