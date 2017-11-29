@@ -14,6 +14,7 @@ use SilverStripe\ExternalLinks\Model\BrokenExternalPageTrackStatus;
 use SilverStripe\ExternalLinks\Tasks\LinkChecker;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\DB;
+use SilverStripe\ORM\ValidationException;
 
 class CheckExternalLinksTask extends BuildTask
 {
@@ -194,7 +195,12 @@ class CheckExternalLinksTask extends BuildTask
             // Update content of page based on link fixes / breakages
             $htmlValue->saveHTML();
             $page->Content = $htmlValue->getContent();
-            $page->write();
+            try {
+                $page->write();
+            } catch (ValidationException $ex) {
+                $this->log("Exception caught for {$page->Title}, skipping. Message: " . $ex->getMessage());
+                continue;
+            }
 
             // Once all links have been created for this page update HasBrokenLinks
             $count = $pageTrack->BrokenLinks()->count();
