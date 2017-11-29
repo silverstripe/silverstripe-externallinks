@@ -2,11 +2,11 @@
 
 namespace SilverStripe\ExternalLinks\Reports;
 
-use SilverStripe\ORM\ArrayList;
-use SilverStripe\ExternalLinks\Model\BrokenExternalPageTrackStatus;
 use SilverStripe\Core\Convert;
-use SilverStripe\View\HTML;
+use SilverStripe\ExternalLinks\Model\BrokenExternalPageTrackStatus;
 use SilverStripe\Forms\LiteralField;
+use SilverStripe\Forms\FormAction;
+use SilverStripe\ORM\ArrayList;
 use SilverStripe\Reports\Report;
 use SilverStripe\View\Requirements;
 
@@ -78,24 +78,19 @@ class BrokenExternalLinksReport extends Report
 
     public function getCMSFields()
     {
+        Requirements::css('silverstripe/externallinks: css/BrokenExternalLinksReport.css');
         Requirements::javascript('silverstripe/externallinks: javascript/BrokenExternalLinksReport.js');
+
         $fields = parent::getCMSFields();
 
-        $reportResultSpan = '</ br></ br><h3 id="ReportHolder"></h3>';
+        $runReportButton = FormAction::create('createReport', _t(__CLASS__ . '.RUNREPORT', 'Create new report'))
+            ->addExtraClass('btn-primary external-links-report__create-report')
+            ->setUseButtonTag(true);
+        $fields->push($runReportButton);
+
+        $reportResultSpan = '<p class="external-links-report__report-progress"></p>';
         $reportResult = LiteralField::create('ResultTitle', $reportResultSpan);
         $fields->push($reportResult);
-
-        $button = HTML::createTag(
-            'button',
-            [
-                'id' => 'externalLinksReport',
-                'type' => 'button',
-                'class' => 'btn btn-primary'
-            ],
-            _t(__CLASS__ . '.RUNREPORT', 'Create new report')
-        );
-        $runReportButton = LiteralField::create('runReport', $button);
-        $fields->push($runReportButton);
 
         return $fields;
     }

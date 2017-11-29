@@ -14,7 +14,7 @@ class CurlLinkChecker implements LinkChecker
     /**
      * Return cache
      *
-     * @return Zend_Cache_Frontend
+     * @return CacheInterface
      */
     protected function getCache()
     {
@@ -36,7 +36,7 @@ class CurlLinkChecker implements LinkChecker
 
         // Check if we have a cached result
         $cacheKey = md5($href);
-        $result = $this->getCache()->get($cacheKey);
+        $result = $this->getCache()->get($cacheKey, false);
         if ($result !== false) {
             return $result;
         }
@@ -51,7 +51,7 @@ class CurlLinkChecker implements LinkChecker
         curl_close($handle);
 
         // Cache result
-        $this->getCache()->set($httpCode, $cacheKey);
+        $this->getCache()->set($cacheKey, $httpCode);
         return $httpCode;
     }
 }
