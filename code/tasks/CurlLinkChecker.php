@@ -6,6 +6,24 @@
 class CurlLinkChecker implements LinkChecker {
 
 	/**
+	 * If we want to follow redirects a 301 http code for example
+	 * Set via YAML file
+	 *
+	 * @config
+	 * @var boolean
+	 */
+	private static $FollowLocation = false;
+
+	/**
+	 * If we want to bypass the cache
+	 * Set via YAML file
+	 *
+	 * @config
+	 * @var boolean
+	 */
+	private static $BypassCache = false;
+
+	/**
 	 * Return cache
 	 *
 	 * @return Zend_Cache_Frontend
