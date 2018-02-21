@@ -58,7 +58,9 @@ class CurlLinkChecker implements LinkChecker
             // Check if we have a cached result
             $cacheKey = md5($href);
             $result = $this->getCache()->load($cacheKey);
-            if($result !== false) return $result;
+            if ($result !== false) {
+                return $result;
+            }
         }
 
         // Check if we have a cached result
@@ -72,7 +74,7 @@ class CurlLinkChecker implements LinkChecker
         $handle = curl_init($href);
         curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
         if ($this->config()->get('follow_location')) {
-            curl_setopt($handle, CURLOPT_FOLLOWLOCATION, TRUE);
+            curl_setopt($handle, CURLOPT_FOLLOWLOCATION, true);
         }
         curl_setopt($handle, CURLOPT_CONNECTTIMEOUT, 5);
         curl_setopt($handle, CURLOPT_TIMEOUT, 10);
