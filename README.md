@@ -83,3 +83,29 @@ SilverStripe\ExternalLinks\Tasks\CheckExternalLinksTask:
 When upgrading from 1.x to 2.x (SilverStripe 3.x to 4.x) you will need to be aware of the following API changes:
 
  * Configuration property `CheckExternalLinksTask.IgnoreCodes` renamed to `CheckExternalLinksTask.ignore_codes`
+ * Configuration property `CheckExternalLinksTask.FollowLocation` and `BypassCache` renamed to `follow_location` and `bypass_cache`
+
+## Follow 301 redirects
+
+You may want to follow a redirected URL a example of this would be redirecting from http to https
+can give you a false poitive as the http code of 301 will be returned which will be classed
+as a working link.
+
+To allow redirects to be followed setup the following config in your config.yml
+
+```yaml
+# Follow 301 redirects
+SilverStripe\ExternalLinks\Tasks\CurlLinkChecker:
+  follow_location: 1
+```
+
+## Bypass cache
+
+By default the task will attempt to cache any results the cache can be bypassed with the
+following config in config.yml.
+
+```yaml
+# Bypass SS_Cache
+SilverStripe\ExternalLinks\Tasks\CurlLinkChecker::
+  bypass_cache: 1
+```
