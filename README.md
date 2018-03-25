@@ -58,7 +58,7 @@ Any subsequent report may not be generated until a prior report has completed.
 
 ## Dev task
 
-Run the following task *http://path.to.silverstripe/dev/tasks/CheckExternalLinks* to check your site for external
+Run the following task *http://path.to.silverstripe/dev/tasks/CheckExternalLinksTask* to check your site for external
 broken links.
 
 ## Queued job
