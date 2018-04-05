@@ -54,20 +54,13 @@ class CurlLinkChecker implements LinkChecker
             return null;
         }
 
+        $cacheKey = md5($href);
         if (!$this->config()->get('bypass_cache')) {
             // Check if we have a cached result
-            $cacheKey = md5($href);
-            $result = $this->getCache()->load($cacheKey);
+            $result = $this->getCache()->get($cacheKey, false);
             if ($result !== false) {
                 return $result;
             }
-        }
-
-        // Check if we have a cached result
-        $cacheKey = md5($href);
-        $result = $this->getCache()->get($cacheKey, false);
-        if ($result !== false) {
-            return $result;
         }
 
         // No cached result so just request
@@ -84,7 +77,7 @@ class CurlLinkChecker implements LinkChecker
 
         if (!$this->config()->get('bypass_cache')) {
             // Cache result
-            $this->getCache()->save($httpCode, $cacheKey);
+            $this->getCache()->set($cacheKey, $httpCode);
         }
         return $httpCode;
     }
