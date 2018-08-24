@@ -2,9 +2,8 @@
 
 namespace SilverStripe\ExternalLinks\Model;
 
-use SilverStripe\ExternalLinks\Model\BrokenExternalPageTrack;
-use SilverStripe\ExternalLinks\Model\BrokenExternalLink;
 use SilverStripe\CMS\Model\SiteTree;
+use SilverStripe\i18n\i18nEntityProvider;
 use SilverStripe\Versioned\Versioned;
 use SilverStripe\ORM\DataObject;
 
@@ -16,7 +15,7 @@ use SilverStripe\ORM\DataObject;
  * @property int $TotalPages Get total pages count
  * @property int $CompletedPages Get completed pages count
  */
-class BrokenExternalPageTrackStatus extends DataObject
+class BrokenExternalPageTrackStatus extends DataObject implements i18nEntityProvider
 {
     private static $table_name = 'BrokenExternalPageTrackStatus';
 
@@ -40,6 +39,23 @@ class BrokenExternalPageTrackStatus extends DataObject
         return self::get()
             ->sort('ID', 'DESC')
             ->first();
+    }
+
+    /**
+     * Returns the list of provided translations for this object
+     *
+     * @return array
+     */
+    public function provideI18nEntities()
+    {
+        return [
+            __CLASS__ . '.SINGULARNAME' => 'Broken External Page Track Status',
+            __CLASS__ . '.PLURALNAME' => 'Broken External Page Track Statuses',
+            __CLASS__ . '.PLURALS' => [
+              'one' => 'A Broken External Page Track Status',
+              'other' => '{count} Broken External Page Track Statuses',
+            ],
+        ];
     }
 
     /**
