@@ -8,7 +8,7 @@ en:
     PLURALNAME: 'Broken External Page Tracks'
     SINGULARNAME: 'Broken External Page Track'
   BrokenExternalPageTrackStatus:
-    PLURALNAME: 'Broken External Page Track Statuss'
+    PLURALNAME: 'Broken External Page Track Statuses'
     SINGULARNAME: 'Broken External Page Track Status'
   CheckExternalLiksJob:
     TITLE: 'Checking for external broken links'
