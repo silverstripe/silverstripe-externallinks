@@ -36,7 +36,7 @@ class CMSExternalLinksController extends Controller
         // Format status
         $track = BrokenExternalPageTrackStatus::get_latest();
         if ($track) {
-            return Convert::array2json([
+            return json_encode([
                 'TrackID' => $track->ID,
                 'Status' => $track->Status,
                 'Completed' => $track->getCompletedPages(),
