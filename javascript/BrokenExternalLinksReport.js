@@ -53,6 +53,7 @@
 
         // set button to "submitting" state
         $button.addClass('btn--loading loading');
+        $button.attr('disabled', true);
 
         if ($button.is('button')) {
           $button.append($(
@@ -75,6 +76,7 @@
         var $button = this.getButton();
 
         $button.removeClass('btn--loading loading');
+        $button.attr('disabled', false);
         $button.find('.btn__loading-icon').remove();
         $button.css('width', 'auto');
       },
