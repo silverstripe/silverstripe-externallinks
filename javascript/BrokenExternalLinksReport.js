@@ -91,7 +91,7 @@
           success: function(data) {
             // No report, so let user create one
             if (!data) {
-              this.buttonReset();
+              self.buttonReset();
               return;
             }
 
