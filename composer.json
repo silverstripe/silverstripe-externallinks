@@ -21,7 +21,7 @@
     },
     "require-dev": {
         "hafriedlander/silverstripe-phockito": "*",
-        "phpunit/PHPUnit": "~3.7@stable"
+        "phpunit/phpunit": "^5.7"
     },
     "suggest": {
         "silverstripe/queuedjobs": "Speeds up running the job for Content Editors fropm the report"
