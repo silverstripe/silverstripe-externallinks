@@ -2,9 +2,9 @@
 
 namespace SilverStripe\ExternalLinks\Model;
 
+use InvalidArgumentException;
+use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Control\HTTPResponse;
-use SilverStripe\ExternalLinks\Model\BrokenExternalPageTrack;
-use SilverStripe\ExternalLinks\Model\BrokenExternalPageTrackStatus;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\Security\Permission;
 use SilverStripe\Security\Security;
@@ -12,6 +12,8 @@ use SilverStripe\Security\Security;
 /**
  * Represents a single link checked for a single run that is broken
  *
+ * @property string Link
+ * @property int HTTPCode
  * @method BrokenExternalPageTrack Track()
  * @method BrokenExternalPageTrackStatus Status()
  */
