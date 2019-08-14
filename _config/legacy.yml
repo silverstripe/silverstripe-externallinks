@@ -1,0 +1,5 @@
+SilverStripe\ORM\DatabaseAdmin:
+  classname_value_remapping:
+    BrokenExternalLink: SilverStripe\ExternalLinks\Model\BrokenExternalLink
+    BrokenExternalPageTrack: SilverStripe\ExternalLinks\Model\BrokenExternalPageTrack
+    BrokenExternalPageTrackStatus: SilverStripe\ExternalLinks\Model\BrokenExternalPageTrackStatus
