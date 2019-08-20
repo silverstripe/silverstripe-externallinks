@@ -1,8 +1,14 @@
 de:
+  SilverStripe\ExternalLinks\Jobs\CheckExternalLinksJob:
+    TITLE: 'Überprüfe defekte externe Links'
   SilverStripe\ExternalLinks\Model\BrokenExternalLink:
     NOTAVAILABLE: 'Server nicht verfügbar'
     PLURALNAME: 'Defekte externe Links'
+    PLURALS:
+      one: 'Ein defekter externer Link'
+      other: '{count} defekte externe Links'
     SINGULARNAME: 'Defekter externer Link'
     UNKNOWNRESPONSE: 'Unbekannter Antwortcode'
   SilverStripe\ExternalLinks\Reports\BrokenExternalLinksReport:
+    EXTERNALBROKENLINKS: 'Defekte externe Links Report'
     RUNREPORT: 'Generiere neuen Bericht'
