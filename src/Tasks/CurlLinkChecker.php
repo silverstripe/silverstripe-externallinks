@@ -32,21 +32,11 @@ class CurlLinkChecker implements LinkChecker
     private static $bypass_cache = false;
 
     /**
-     * Set default user agent as config
-     * Override via YAML file
-     * 
-     * * @config
-     * @var string
-     */
-    private static $user_agent = '';
-
-    /**
      * Allow to pass custom header to be in CURL request
      * 
      * * @config
      * @var array
      */
-
      private static $headers = [];
 
     /**
@@ -90,20 +80,14 @@ class CurlLinkChecker implements LinkChecker
             curl_setopt($handle, CURLOPT_FOLLOWLOCATION, true);
         }
 
-        // Add user agent
-        $userAgent = trim($this->config()->get('user_agent'));
-        if ($userAgent) {
-            curl_setopt($handle, CURLOPT_USERAGENT , $userAgent);
-        }
-
-        // Other headers
-        if ($headers = $this->config()->get('headers')) {
-            if (is_array($headers)) {
-                 curl_setopt($handle, CURLOPT_HTTPHEADER , $headers);
-            } else {
-                 curl_setopt($handle, CURLOPT_HTTPHEADER , array($headers));
-            }
-        }
+        // Add headers
+        $headers = (array) $this->config()->get('headers');
+        if (!empty($headers)) {
+            array_walk($headers, function(&$value, $header) {
+                $value = "$header: $value";
+            });
+            curl_setopt($handle, CURLOPT_HTTPHEADER , $headers); 
+        }        
         
         // Retrieve http code
         curl_exec($handle);
