@@ -33,11 +33,11 @@ class CurlLinkChecker implements LinkChecker
 
     /**
      * Allow to pass custom header to be in CURL request
-     * 
+     *
      * @config
      * @var array
      */
-     private static $headers = [];
+    private static $headers = [];
 
     /**
      * Return cache
@@ -83,11 +83,11 @@ class CurlLinkChecker implements LinkChecker
         // Add headers
         $headers = (array) $this->config()->get('headers');
         if (!empty($headers)) {
-            array_walk($headers, function(&$value, $header) {
+            array_walk($headers, function (&$value, $header) {
                 $value = "$header: $value";
             });
-            curl_setopt($handle, CURLOPT_HTTPHEADER , $headers); 
-        }        
+            curl_setopt($handle, CURLOPT_HTTPHEADER, $headers);
+        }
         
         // Retrieve http code
         curl_exec($handle);
