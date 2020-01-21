@@ -34,7 +34,7 @@ class CurlLinkChecker implements LinkChecker
     /**
      * Allow to pass custom header to be in CURL request
      * 
-     * * @config
+     * @config
      * @var array
      */
      private static $headers = [];
