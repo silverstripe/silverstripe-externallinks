@@ -35,11 +35,19 @@ class BrokenExternalLinksReport extends SS_Report {
 				"title" => 'Page link is on',
 				'formatting' => function($value, $item) {
 					$page = $item->Page();
-					return sprintf(
-						'<a href="%s">%s</a>',
-						Convert::raw2att($page->CMSEditLink()),
-						Convert::raw2xml($page->Title)
-					);
+
+					if ($page) {
+						return sprintf(
+							'<a href="%s">%s</a>',
+							Convert::raw2att($page->CMSEditLink()),
+							Convert::raw2xml($page->Title)
+						);
+					} else {
+						return sprintf(
+							'%s',
+							$item->Track()->PageID
+						);
+					}
 				}
 			)
 		);
