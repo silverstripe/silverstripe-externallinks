@@ -1,17 +1,26 @@
 eo:
+  SilverStripe\ExternalLinks\Jobs\CheckExternalLinksJob:
+    TITLE: 'Kontrolas por eksteraj rompitaj ligiloj'
   SilverStripe\ExternalLinks\Model\BrokenExternalLink:
     NOTAVAILABLE: 'Servilo estas neatingenbla'
     PLURALNAME: 'Rompitaj eksteraj ligiloj'
+    PLURALS:
+      one: 'Unu rompita ekstera ligilo'
+      other: '{count} rompitaj eksteraj ligiloj'
     SINGULARNAME: 'Rompita ekstera ligilo'
     UNKNOWNRESPONSE: 'Nekonata respondokodo'
   SilverStripe\ExternalLinks\Model\BrokenExternalPageTrack:
     PLURALNAME: 'Rompitaj eksteraj paĝaj trakoj'
+    PLURALS:
+      one: 'Unu rompita ekstera paĝa trako'
+      other: '{count} rompitaj eksteraj paĝaj trakoj'
     SINGULARNAME: 'Rompita ekstera paĝa trako'
   SilverStripe\ExternalLinks\Model\BrokenExternalPageTrackStatus:
     PLURALNAME: 'Stato de rompitaj eksteraj paĝaj trakoj'
+    PLURALS:
+      one: 'Unu stato de rompita ekstera paĝa trako'
+      other: '{count} statoj de rompitaj eksteraj paĝaj trakoj'
     SINGULARNAME: 'Stato de rompita ekstera paĝa trako'
-  SilverStripe\ExternalLinks\Jobs\CheckExternalLinksJob:
-    TITLE: 'Kontrolas por eksteraj rompitaj ligiloj'
   SilverStripe\ExternalLinks\Reports\BrokenExternalLinksReport:
     EXTERNALBROKENLINKS: 'Raporto pri eksteraj rompitaj ligiloj'
     RUNREPORT: 'Krei novan raporton'

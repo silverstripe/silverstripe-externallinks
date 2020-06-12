@@ -1,0 +1,26 @@
+fi_FI:
+  SilverStripe\ExternalLinks\Jobs\CheckExternalLinksJob:
+    TITLE: 'Tarkastetaan ulkoiset rikkinäiset linkit'
+  SilverStripe\ExternalLinks\Model\BrokenExternalLink:
+    NOTAVAILABLE: 'Palvelin ei saatavilla'
+    PLURALNAME: 'Rikkinäiset ulkoiset linkit'
+    PLURALS:
+      one: 'Rikkinäinen ulkoinen linkki'
+      other: '{count} rikkinäistä ulkoista linkkiä'
+    SINGULARNAME: 'Rikkinäinen ulkoinen linkki'
+    UNKNOWNRESPONSE: 'Tuntematon vastauskoodi'
+  SilverStripe\ExternalLinks\Model\BrokenExternalPageTrack:
+    PLURALNAME: 'Rikkinäiset ulkoiset sivut'
+    PLURALS:
+      one: 'Rikkinäinen ulkoinen sivu'
+      other: '{count} rikkinäistä ulkoista sivua'
+    SINGULARNAME: 'Rikkinäinen ulkoinen sivu'
+  SilverStripe\ExternalLinks\Model\BrokenExternalPageTrackStatus:
+    PLURALNAME: 'Rikkinäisten ulkoisten sivujen tila'
+    PLURALS:
+      one: 'Rikkinäisen ulkoisen sivun tila'
+      other: '{count} rikkinäistä ulkoisten sivujen tilaa'
+    SINGULARNAME: 'Rikkinäisen ulkoisen sivun tila'
+  SilverStripe\ExternalLinks\Reports\BrokenExternalLinksReport:
+    EXTERNALBROKENLINKS: 'Rikkinäisten ulkoisten linkkien raportti'
+    RUNREPORT: 'Luo uusi raportti'

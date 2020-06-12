@@ -1,0 +1,26 @@
+nl:
+  SilverStripe\ExternalLinks\Jobs\CheckExternalLinksJob:
+    TITLE: 'Niet-werkende externe links worden gecontroleerd'
+  SilverStripe\ExternalLinks\Model\BrokenExternalLink:
+    NOTAVAILABLE: 'Server niet beschikbaar'
+    PLURALNAME: 'Kapotte externe links'
+    PLURALS:
+      one: 'Kapotte externe link'
+      other: '{count} Kapotte externe links'
+    SINGULARNAME: 'Kapotte externe link'
+    UNKNOWNRESPONSE: 'Onbekende responsecode'
+  SilverStripe\ExternalLinks\Model\BrokenExternalPageTrack:
+    PLURALNAME: 'Kapotte externe Pagina Verwijzing'
+    PLURALS:
+      one: 'Kapotte externe Pagina Verwijzing'
+      other: '{count} Kapotte externe Pagina Verwijzing'
+    SINGULARNAME: 'Kapotte externe Pagina Verwijzing'
+  SilverStripe\ExternalLinks\Model\BrokenExternalPageTrackStatus:
+    PLURALNAME: 'Kapotte externe Pagina Verwijzing Statusssen'
+    PLURALS:
+      one: 'Een kapotte externe Pagina Verwijzing Status'
+      other: '{count} Kapotte externe Pagina Verwijzing Statusssen'
+    SINGULARNAME: 'Kapotte externe Pagina Verwijzing Status'
+  SilverStripe\ExternalLinks\Reports\BrokenExternalLinksReport:
+    EXTERNALBROKENLINKS: 'Externe kapotte links overzicht'
+    RUNREPORT: 'Maak nieuw overzicht'
