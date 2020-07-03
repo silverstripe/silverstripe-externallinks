@@ -83,12 +83,9 @@ class CurlLinkChecker implements LinkChecker
         // Add headers
         $headers = (array) $this->config()->get('headers');
         if (!empty($headers)) {
-            array_walk($headers, function (&$value, $header) {
-                $value = "$header: $value";
-            });
             curl_setopt($handle, CURLOPT_HTTPHEADER, $headers);
         }
-        
+
         // Retrieve http code
         curl_exec($handle);
         $httpCode = curl_getinfo($handle, CURLINFO_HTTP_CODE);
