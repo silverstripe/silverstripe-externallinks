@@ -110,3 +110,19 @@ following config in config.yml.
 SilverStripe\ExternalLinks\Tasks\CurlLinkChecker::
   bypass_cache: 1
 ```
+
+## Headers
+
+You may want to set headers to be sent with the CURL request (eg: user-agent) to avoid website rejecting the request thinking it is a bot.
+You can set them with the following config in config.yml.
+
+```yaml
+# Headers
+SilverStripe\ExternalLinks\Tasks\CurlLinkChecker:
+  headers:
+    - 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:53.0) Gecko/20100101 Firefox/53.0'
+    - 'accept-encoding: gzip, deflate, br'
+    - 'referer: https://www.domain.com/'
+    - 'sec-fetch-mode: navigate'
+    ...
+```
