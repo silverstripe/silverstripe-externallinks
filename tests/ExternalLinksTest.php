@@ -107,4 +107,22 @@ class ExternalLinksTest extends SapphireTest
             'BrokenExternalLinksReport is in reports list'
         );
     }
+
+    public function testArchivedPagesAreHiddenFromReport()
+    {
+        // Run link checker
+        $task = CheckExternalLinksTask::create();
+        $task->setSilent(true); // Be quiet during the test!
+        $task->runLinksCheck();
+
+        // Ensure report lists all broken links
+        $this->assertEquals(4, BrokenExternalLinksReport::create()->sourceRecords()->count());
+
+        // Archive a page
+        $page = $this->objFromFixture(ExternalLinksTestPage::class, 'page1');
+        $page->doArchive();
+
+        // Ensure report does not list the link associated with an archived page
+        $this->assertEquals(3, BrokenExternalLinksReport::create()->sourceRecords()->count());
+    }
 }
