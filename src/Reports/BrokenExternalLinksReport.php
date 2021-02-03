@@ -71,7 +71,8 @@ class BrokenExternalLinksReport extends Report
     {
         $track = BrokenExternalPageTrackStatus::get_latest();
         if ($track) {
-            return $track->BrokenLinks();
+            // Filter items that are attached to archived Pages
+            return $track->BrokenLinks()->exclude('Track.Page.ID', null);
         }
         return ArrayList::create();
     }
