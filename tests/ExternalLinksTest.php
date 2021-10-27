@@ -22,7 +22,7 @@ class ExternalLinksTest extends SapphireTest
         ExternalLinksTestPage::class
     );
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
