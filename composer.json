@@ -19,12 +19,13 @@
         "squizlabs/php_codesniffer": "^3.0"
     },
     "suggest": {
-        "silverstripe/queuedjobs": "Provides a more efficient method of generating/updating the report"
+        "ssymbiote/silverstripe-queuedjobs": "Provides a more efficient method of generating/updating the report"
     },
     "autoload": {
         "psr-4": {
             "SilverStripe\\ExternalLinks\\": "src/",
-            "SilverStripe\\ExternalLinks\\Tests\\": "tests/"
+            "SilverStripe\\ExternalLinks\\Tests\\": "tests/",
+            "SilverStripe\\ExternalLinks\\Tests\\Behat\\Context\\": "tests/behat/src/"
         }
     },
     "extra": {
