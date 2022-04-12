@@ -101,7 +101,7 @@ class CheckExternalLinksTask extends BuildTask
     {
         $class = $link->getAttribute('class');
         $href = $link->getAttribute('href');
-        $markedBroken = preg_match('/\b(ss-broken)\b/', $class);
+        $markedBroken = preg_match('/\b(ss-broken)\b/', $class ?? '');
 
         // Check link
         $httpCode = $this->linkChecker->checkLink($href);
@@ -127,9 +127,9 @@ class CheckExternalLinksTask extends BuildTask
         if ($foundBroken) {
             $class .= ' ss-broken';
         } else {
-            $class = preg_replace('/\s*\b(ss-broken)\b\s*/', ' ', $class);
+            $class = preg_replace('/\s*\b(ss-broken)\b\s*/', ' ', $class ?? '');
         }
-        $link->setAttribute('class', trim($class));
+        $link->setAttribute('class', trim($class ?? ''));
     }
 
     /**
@@ -147,7 +147,7 @@ class CheckExternalLinksTask extends BuildTask
 
         // do we have any whitelisted codes
         $ignoreCodes = $this->config()->get('ignore_codes');
-        if (is_array($ignoreCodes) && in_array($httpCode, $ignoreCodes)) {
+        if (is_array($ignoreCodes) && in_array($httpCode, $ignoreCodes ?? [])) {
             return false;
         }
 

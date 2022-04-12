@@ -68,7 +68,7 @@ class ExternalLinksTest extends SapphireTest
                 'http://www.broken.com/url/thing',
                 'http://www.nodomain.com'
             ),
-            array_values($links->map('ID', 'Link')->toArray())
+            array_values($links->map('ID', 'Link')->toArray() ?? [])
         );
 
         // Check response codes are correct
