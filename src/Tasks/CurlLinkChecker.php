@@ -58,11 +58,11 @@ class CurlLinkChecker implements LinkChecker
     public function checkLink($href)
     {
         // Skip non-external links
-        if (!preg_match('/^https?[^:]*:\/\//', $href)) {
+        if (!preg_match('/^https?[^:]*:\/\//', $href ?? '')) {
             return null;
         }
 
-        $cacheKey = md5($href);
+        $cacheKey = md5($href ?? '');
         if (!$this->config()->get('bypass_cache')) {
             // Check if we have a cached result
             $result = $this->getCache()->get($cacheKey, false);
