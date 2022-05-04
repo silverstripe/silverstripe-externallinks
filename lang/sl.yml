@@ -1,0 +1,32 @@
+sl:
+  SilverStripe\ExternalLinks\Jobs\CheckExternalLinksJob:
+    TITLE: 'Preverjamo, ali so zunanje povezave dostopne'
+  SilverStripe\ExternalLinks\Model\BrokenExternalLink:
+    NOTAVAILABLE: 'Strežnik ni na voljo'
+    PLURALNAME: 'Nedostopne zunanje povezave'
+    PLURALS:
+      one: 'Nedostopna zunanja povezava'
+      two: '{count} nedostopni zunanji povezavi'
+      few: '{count} nedostopnih zunanjih povezav'
+      other: '{count} nedostopnih zunanjih povezav'
+    SINGULARNAME: 'Nedostopna zunanja povezava'
+    UNKNOWNRESPONSE: 'Neznana šifra odziva'
+  SilverStripe\ExternalLinks\Model\BrokenExternalPageTrack:
+    PLURALNAME: 'Preverjanja nedostopnih zunanjih povezav'
+    PLURALS:
+      one: 'Preverjanje nedostopnih zunanjih povezav'
+      two: '{count} preverjanji nedostopnih zunanjih povezav'
+      few: '{count} preverjanj nedostopnih zunanjih povezav'
+      other: '{count} preverjanj nedostopnih zunanjih povezav'
+    SINGULARNAME: 'Preverjanje nedostopnih zunanjih povezav'
+  SilverStripe\ExternalLinks\Model\BrokenExternalPageTrackStatus:
+    PLURALNAME: 'Status preverjanj'
+    PLURALS:
+      one: 'Status preverjanja'
+      two: '{count} statusa preverjanj'
+      few: '{count} statusov preverjanj'
+      other: '{count} statusov preverjanj'
+    SINGULARNAME: 'Status preverjanja'
+  SilverStripe\ExternalLinks\Reports\BrokenExternalLinksReport:
+    EXTERNALBROKENLINKS: 'Poročilo o nedostopnih zunanjih povezavah'
+    RUNREPORT: 'Pripravi novo poročilo'
