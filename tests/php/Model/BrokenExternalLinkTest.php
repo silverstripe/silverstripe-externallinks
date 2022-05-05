@@ -8,21 +8,16 @@ use SilverStripe\ExternalLinks\Model\BrokenExternalLink;
 class BrokenExternalLinkTest extends SapphireTest
 {
     /**
-     * @param int $httpCode
-     * @param string $expected
      * @dataProvider httpCodeProvider
      */
-    public function testGetHTTPCodeDescription($httpCode, $expected)
+    public function testGetHTTPCodeDescription(int $httpCode, string $expected)
     {
         $link = new BrokenExternalLink();
         $link->HTTPCode = $httpCode;
         $this->assertSame($expected, $link->getHTTPCodeDescription());
     }
-
-    /**
-     * @return array[]
-     */
-    public function httpCodeProvider()
+    
+    public function httpCodeProvider(): array
     {
         return [
             [200, '200 (OK)'],
@@ -31,5 +26,31 @@ class BrokenExternalLinkTest extends SapphireTest
             [500, '500 (Internal Server Error)'],
             [789, '789 (Unknown Response Code)'],
         ];
+    }
+
+    public function permissionProvider(): array
+    {
+        return [
+            ['admin', 'ADMIN'],
+            ['content-author', 'CMS_ACCESS_CMSMain'],
+            ['asset-admin', 'CMS_ACCESS_AssetAdmin'],
+        ];
+    }
+
+    /**
+     * @dataProvider permissionProvider
+     */
+    public function testCanViewReport(string $user, string $permission)
+    {
+        $this->logOut();
+        $this->logInWithPermission($permission);
+
+        $link = new BrokenExternalLink();
+        
+        if ($user === 'asset-admin') {
+            $this->assertFalse($link->canView());
+        } else {
+            $this->assertTrue($link->canView());
+        }
     }
 }
