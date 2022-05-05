@@ -58,7 +58,7 @@ class BrokenExternalLink extends DataObject
     public function canView($member = false)
     {
         $member = $member ? $member : Security::getCurrentUser();
-        $codes = array('content-authors', 'administrators');
+        $codes = ['CMS_ACCESS_CMSMain'];
         return Permission::checkMember($member, $codes);
     }
 
