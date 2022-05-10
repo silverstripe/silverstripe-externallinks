@@ -24,7 +24,7 @@
         "squizlabs/php_codesniffer": "^3.0"
     },
     "suggest": {
-        "ssymbiote/silverstripe-queuedjobs": "Provides a more efficient method of generating/updating the report"
+        "symbiote/silverstripe-queuedjobs": "Provides a more efficient method of generating/updating the report"
     },
     "autoload": {
         "psr-4": {
