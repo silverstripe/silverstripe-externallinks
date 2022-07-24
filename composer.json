@@ -21,7 +21,8 @@
     },
     "require-dev": {
         "phpunit/phpunit": "^9.5",
-        "squizlabs/php_codesniffer": "^3.0"
+        "squizlabs/php_codesniffer": "^3.0",
+        "symbiote/silverstripe-queuedjobs": "^4.9"
     },
     "suggest": {
         "symbiote/silverstripe-queuedjobs": "Provides a more efficient method of generating/updating the report"
@@ -35,8 +36,8 @@
     },
     "extra": {
         "expose": [
-            "css",
-            "javascript"
+            "client/css",
+            "client/javascript"
         ]
     },
     "minimum-stability": "dev",
