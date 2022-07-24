@@ -1,6 +1,6 @@
 # External links
 
-[![Build Status](https://api.travis-ci.com/silverstripe/silverstripe-externallinks.svg?branch=2)](https://travis-ci.com/silverstripe/silverstripe-externallinks)
+[![CI](https://github.com/silverstripe/silverstripe-externallinks/actions/workflows/ci.yml/badge.svg)](https://github.com/silverstripe/silverstripe-externallinks/actions/workflows/ci.yml)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/silverstripe/silverstripe-externallinks/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/silverstripe/silverstripe-externallinks/?branch=master)
 [![codecov](https://codecov.io/gh/silverstripe/silverstripe-externallinks/branch/master/graph/badge.svg)](https://codecov.io/gh/silverstripe/silverstripe-externallinks)
 [![SilverStripe supported module](https://img.shields.io/badge/silverstripe-supported-0071C4.svg)](https://www.silverstripe.org/software/addons/silverstripe-commercially-supported-module-list/)
