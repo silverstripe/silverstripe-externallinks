@@ -1,9 +1,7 @@
 # External links
 
 [![CI](https://github.com/silverstripe/silverstripe-externallinks/actions/workflows/ci.yml/badge.svg)](https://github.com/silverstripe/silverstripe-externallinks/actions/workflows/ci.yml)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/silverstripe/silverstripe-externallinks/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/silverstripe/silverstripe-externallinks/?branch=master)
-[![codecov](https://codecov.io/gh/silverstripe/silverstripe-externallinks/branch/master/graph/badge.svg)](https://codecov.io/gh/silverstripe/silverstripe-externallinks)
-[![SilverStripe supported module](https://img.shields.io/badge/silverstripe-supported-0071C4.svg)](https://www.silverstripe.org/software/addons/silverstripe-commercially-supported-module-list/)
+[![Silverstripe supported module](https://img.shields.io/badge/silverstripe-supported-0071C4.svg)](https://www.silverstripe.org/software/addons/silverstripe-commercially-supported-module-list/)
 
 ## Introduction
 
@@ -15,9 +13,9 @@ The external links module is a task and ModelAdmin to track and to report on bro
 
 ## Requirements
 
-* SilverStripe ^4.0
+* Silverstripe ^4.0
 
-**Note:** For a SilverStripe 3.x compatible version, please use [the 1.x release line](https://github.com/silverstripe/silverstripe-externallinks/tree/1.0).
+**Note:** For a Silverstripe 3.x compatible version, please use [the 1.x release line](https://github.com/silverstripe/silverstripe-externallinks/tree/1.0).
 
 ## Features
 
@@ -81,7 +79,7 @@ SilverStripe\ExternalLinks\Tasks\CheckExternalLinksTask:
 
 ## Upgrading from 1.x to 2.x
 
-When upgrading from 1.x to 2.x (SilverStripe 3.x to 4.x) you will need to be aware of the following API changes:
+When upgrading from 1.x to 2.x (Silverstripe 3.x to 4.x) you will need to be aware of the following API changes:
 
  * Configuration property `CheckExternalLinksTask.IgnoreCodes` renamed to `CheckExternalLinksTask.ignore_codes`
  * Configuration property `CheckExternalLinksTask.FollowLocation` and `BypassCache` renamed to `follow_location` and `bypass_cache`
