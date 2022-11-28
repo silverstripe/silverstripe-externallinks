@@ -2,13 +2,12 @@
 
 namespace SilverStripe\ExternalLinks\Controllers;
 
-use SilverStripe\Control\HTTP;
-use SilverStripe\Core\Convert;
 use SilverStripe\ExternalLinks\Model\BrokenExternalPageTrackStatus;
 use SilverStripe\ExternalLinks\Jobs\CheckExternalLinksJob;
 use SilverStripe\ExternalLinks\Tasks\CheckExternalLinksTask;
 use SilverStripe\Control\Controller;
 use Symbiote\QueuedJobs\Services\QueuedJobService;
+use SilverStripe\Control\Middleware\HTTPCacheControlMiddleware;
 
 class CMSExternalLinksController extends Controller
 {
@@ -26,8 +25,7 @@ class CMSExternalLinksController extends Controller
     public function getJobStatus()
     {
         // Set headers
-        HTTP::set_cache_age(0);
-        HTTP::add_cache_headers($this->response);
+        HTTPCacheControlMiddleware::singleton()->setMaxAge(0);
         $this->response
             ->addHeader('Content-Type', 'application/json')
             ->addHeader('Content-Encoding', 'UTF-8')
