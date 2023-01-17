@@ -15,6 +15,7 @@ use SilverStripe\ExternalLinks\Tasks\LinkChecker;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\DB;
 use SilverStripe\ORM\ValidationException;
+use SilverStripe\View\Parsers\HTMLValue;
 
 class CheckExternalLinksTask extends BuildTask
 {
@@ -181,7 +182,7 @@ class CheckExternalLinksTask extends BuildTask
             // Check value of html area
             $page = $pageTrack->Page();
             $this->log("Checking {$page->Title}");
-            $htmlValue = Injector::inst()->create('HTMLValue', $page->Content);
+            $htmlValue = Injector::inst()->create(HTMLValue::class, $page->Content);
             if (!$htmlValue->isValid()) {
                 continue;
             }
