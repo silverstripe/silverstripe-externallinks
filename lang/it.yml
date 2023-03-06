@@ -7,6 +7,7 @@ it:
     PLURALS:
       one: 'Un Link Esterno Orfano'
       other: '{count} Link Esterni Orfani'
+      many: '{count} Link Esterni Orfani'
     SINGULARNAME: 'Link Esterno Orfano'
     UNKNOWNRESPONSE: 'Codice di Risposta Sconosciuto'
   SilverStripe\ExternalLinks\Model\BrokenExternalPageTrack:
@@ -14,12 +15,14 @@ it:
     PLURALS:
       one: 'Una Traccia Pagina Esterna Orfana'
       other: '{count} Tracce Pagine Esterne Orfane'
+      many: '{count} Tracce Pagine Esterne Orfane'
     SINGULARNAME: 'Traccia Pagina Esterna Orfana'
   SilverStripe\ExternalLinks\Model\BrokenExternalPageTrackStatus:
     PLURALNAME: 'Stati Tracce Pagine Esterne Orfane'
     PLURALS:
       one: 'Uno Stato Traccia Pagina Esterna Orfana'
       other: '{count} Stati Tracce Pagine Esterne Orfane'
+      many: '{count} Stati Tracce Pagine Esterne Orfane'
     SINGULARNAME: 'Stato Traccia Pagina Esterna Orfana'
   SilverStripe\ExternalLinks\Reports\BrokenExternalLinksReport:
     EXTERNALBROKENLINKS: 'Report link esterni orfani'
