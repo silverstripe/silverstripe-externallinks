@@ -1,0 +1,16 @@
+fi:
+  SilverStripe\ExternalLinks\Jobs\CheckExternalLinksJob:
+    TITLE: 'Tarkastettaan rikkinäiset ulkoiset linkit'
+  SilverStripe\ExternalLinks\Model\BrokenExternalLink:
+    NOTAVAILABLE: 'Palvelin ei saatavilla'
+    PLURALNAME: 'Rikkinäiset ulkoiset linkit'
+    SINGULARNAME: 'Rikkinäinen ulkoinen linkki'
+    UNKNOWNRESPONSE: 'Tuntematon vastauskoodi'
+  SilverStripe\ExternalLinks\Model\BrokenExternalPageTrack:
+    PLURALNAME: 'Rikkinäiset ulkoisen sivun reitit'
+    SINGULARNAME: 'Rikkinäinen ulkoisen sivun reitti'
+  SilverStripe\ExternalLinks\Model\BrokenExternalPageTrackStatus:
+    SINGULARNAME: 'Rikkinäinen ulkoisen sivun reitin tila'
+  SilverStripe\ExternalLinks\Reports\BrokenExternalLinksReport:
+    EXTERNALBROKENLINKS: 'Raportti ulkoisista rikkinäisistä linkeistä'
+    RUNREPORT: 'Luo uusi raportti'

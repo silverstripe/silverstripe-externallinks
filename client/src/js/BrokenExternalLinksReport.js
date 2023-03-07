@@ -5,6 +5,7 @@
     $('.external-links-report__create-report').entwine({
       PollTimeout: null,
       ButtonIsLoading: false,
+      ReloadContent: false,
 
       onclick(e) {
         e.preventDefault();
@@ -19,6 +20,7 @@
       },
 
       start() {
+        const self = this;
         // initiate a new job
         $('.external-links-report__report-progress')
           .empty()
@@ -27,10 +29,17 @@
         $.ajax({
           url: 'admin/externallinks/start',
           async: true,
-          timeout: 3000
+          timeout: 3000,
+          success() {
+            self.setReloadContent(true);
+            self.poll();
+          },
+          error(e) {
+            if (typeof console !== 'undefined') {
+              console.error(e);
+            }
+          }
         });
-
-        this.poll();
       },
 
       /**
@@ -103,6 +112,10 @@
 
             // If complete status
             if (data.Status === 'Completed') {
+              if (self.getReloadContent()) {
+                $('.cms-container').loadPanel(document.location.href, null, {}, true, false);
+                self.setReloadContent(false);
+              }
               $('.external-links-report__report-progress')
                 .text(`Report finished ${completed}/${total}`);
 
@@ -130,6 +143,7 @@
           error(e) {
             if (typeof console !== 'undefined') {
               console.error(e);
+              self.buttonReset();
             }
           }
         });
