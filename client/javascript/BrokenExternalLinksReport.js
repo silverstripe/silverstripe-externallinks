@@ -129,6 +129,7 @@
             if (typeof console !== 'undefined') {
               console.log(e);
             }
+            self.buttonReset();
           }
         });
       }
