@@ -36,6 +36,7 @@
           },
           error(e) {
             if (typeof console !== 'undefined') {
+              // eslint-disable-next-line no-console
               console.error(e);
             }
           }
@@ -142,9 +143,10 @@
           },
           error(e) {
             if (typeof console !== 'undefined') {
+              // eslint-disable-next-line no-console
               console.error(e);
-              self.buttonReset();
             }
+            self.buttonReset();
           }
         });
       }
