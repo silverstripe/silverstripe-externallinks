@@ -11,12 +11,6 @@ The external links module is a task and ModelAdmin to track and to report on bro
 
  * Damian Mooyman (@tractorcow) <damian@silverstripe.com>
 
-## Requirements
-
-* Silverstripe ^4.0
-
-**Note:** For a Silverstripe 3.x compatible version, please use [the 1.x release line](https://github.com/silverstripe/silverstripe-externallinks/tree/1.0).
-
 ## Features
 
 * Add external links to broken links reports
@@ -24,10 +18,9 @@ The external links module is a task and ModelAdmin to track and to report on bro
 
 ## Installation
 
- 1. Require the module via composer: `composer require silverstripe/externallinks`
- 2. Run `/dev/build` in your browser to rebuild the database.
- 3. Run the following task *http://path.to.silverstripe/dev/tasks/CheckExternalLinks* to check for
-    broken external links
+```sh
+composer require silverstripe/externallinks
+```
 
 ## Report
 
@@ -76,13 +69,6 @@ SilverStripe\ExternalLinks\Tasks\CheckExternalLinksTask:
     - 403
     - 501
 ```
-
-## Upgrading from 1.x to 2.x
-
-When upgrading from 1.x to 2.x (Silverstripe 3.x to 4.x) you will need to be aware of the following API changes:
-
- * Configuration property `CheckExternalLinksTask.IgnoreCodes` renamed to `CheckExternalLinksTask.ignore_codes`
- * Configuration property `CheckExternalLinksTask.FollowLocation` and `BypassCache` renamed to `follow_location` and `bypass_cache`
 
 ## Follow 301 redirects
 
