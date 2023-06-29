@@ -1,4 +1,5 @@
 /* global jQuery */
+// eslint-disable-next-line func-names
 (function ($) {
   // eslint-disable-next-line no-shadow
   $.entwine('ss', ($) => {
@@ -39,7 +40,7 @@
               // eslint-disable-next-line no-console
               console.error(e);
             }
-          }
+          },
         });
       },
 
@@ -147,9 +148,9 @@
               console.error(e);
             }
             self.buttonReset();
-          }
+          },
         });
-      }
+      },
     });
   });
 }(jQuery));
