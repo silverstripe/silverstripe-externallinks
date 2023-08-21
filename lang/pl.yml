@@ -1,4 +1,6 @@
 pl:
+  SilverStripe\ExternalLinks\Jobs\CheckExternalLinksJob:
+    TITLE: 'Wyszukiwanie uszkodzonych linków zewnętrznych'
   SilverStripe\ExternalLinks\Model\BrokenExternalLink:
     NOTAVAILABLE: 'Serwer niedostępny'
     PLURALNAME: 'Uszkodzone linki zewnętrzne'
@@ -10,8 +12,6 @@ pl:
   SilverStripe\ExternalLinks\Model\BrokenExternalPageTrackStatus:
     PLURALNAME: 'Statusy wykrywania wadliwych stron zewnętrznych'
     SINGULARNAME: 'Status wykrywania wadliwych stron zewnętrznych'
-  SilverStripe\ExternalLinks\Jobs\CheckExternalLinksJob:
-    TITLE: 'Wyszukiwanie uszkodzonych linków zewnętrznych'
   SilverStripe\ExternalLinks\Reports\BrokenExternalLinksReport:
     EXTERNALBROKENLINKS: 'Raport uszkodzonych linków zewnętrznych'
     RUNREPORT: 'Stwórz nowy raport'

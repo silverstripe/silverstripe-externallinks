@@ -5,24 +5,24 @@ it:
     NOTAVAILABLE: 'Server Non Disponibile'
     PLURALNAME: 'Link Esterni Orfani'
     PLURALS:
+      many: '{count} Link Esterni Orfani'
       one: 'Un Link Esterno Orfano'
       other: '{count} Link Esterni Orfani'
-      many: '{count} Link Esterni Orfani'
     SINGULARNAME: 'Link Esterno Orfano'
     UNKNOWNRESPONSE: 'Codice di Risposta Sconosciuto'
   SilverStripe\ExternalLinks\Model\BrokenExternalPageTrack:
     PLURALNAME: 'Tracce Pagine Esterne Orfane'
     PLURALS:
+      many: '{count} Tracce Pagine Esterne Orfane'
       one: 'Una Traccia Pagina Esterna Orfana'
       other: '{count} Tracce Pagine Esterne Orfane'
-      many: '{count} Tracce Pagine Esterne Orfane'
     SINGULARNAME: 'Traccia Pagina Esterna Orfana'
   SilverStripe\ExternalLinks\Model\BrokenExternalPageTrackStatus:
     PLURALNAME: 'Stati Tracce Pagine Esterne Orfane'
     PLURALS:
+      many: '{count} Stati Tracce Pagine Esterne Orfane'
       one: 'Uno Stato Traccia Pagina Esterna Orfana'
       other: '{count} Stati Tracce Pagine Esterne Orfane'
-      many: '{count} Stati Tracce Pagine Esterne Orfane'
     SINGULARNAME: 'Stato Traccia Pagina Esterna Orfana'
   SilverStripe\ExternalLinks\Reports\BrokenExternalLinksReport:
     EXTERNALBROKENLINKS: 'Report link esterni orfani'
