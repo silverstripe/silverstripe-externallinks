@@ -62,9 +62,6 @@ class CMSExternalLinksController extends Controller
             $checkLinks = new CheckExternalLinksJob();
             singleton(QueuedJobService::class)->queueJob($checkLinks);
         } else {
-            //TODO this hangs as it waits for the connection to be released
-            // should return back and continue processing
-            // http://us3.php.net/manual/en/features.connection-handling.php
             $task = CheckExternalLinksTask::create();
             $task->runLinksCheck();
         }
