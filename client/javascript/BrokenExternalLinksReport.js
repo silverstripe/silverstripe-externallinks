@@ -17,6 +17,7 @@
       },
 
       start: function() {
+        var self = this;
         // initiate a new job
         $('.external-links-report__report-progress')
           .empty()
@@ -25,10 +26,14 @@
         $.ajax({
           url: "admin/externallinks/start",
           async: true,
-          timeout: 3000
+          timeout: 3000,
+          success: function() {
+            self.poll();
+          },
+          error: function() {
+            self.buttonReset();
+          }
         });
-
-        this.poll();
       },
 
       /**
@@ -125,10 +130,7 @@
               $('.external-links-report__create-report').poll();
             }, 1000));
           },
-          error: function(e) {
-            if (typeof console !== 'undefined') {
-              console.log(e);
-            }
+          error: function() {
             self.buttonReset();
           }
         });
