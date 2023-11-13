@@ -3,7 +3,7 @@
 namespace SilverStripe\ExternalLinks\Tests;
 
 use SilverStripe\Core\Injector\Injector;
-use SilverStripe\Dev\SapphireTest;
+use SilverStripe\Dev\FunctionalTest;
 use SilverStripe\ExternalLinks\Model\BrokenExternalPageTrackStatus;
 use SilverStripe\ExternalLinks\Reports\BrokenExternalLinksReport;
 use SilverStripe\ExternalLinks\Tasks\CheckExternalLinksTask;
@@ -13,7 +13,7 @@ use SilverStripe\ExternalLinks\Tests\Stubs\PretendLinkChecker;
 use SilverStripe\i18n\i18n;
 use SilverStripe\Reports\Report;
 
-class ExternalLinksTest extends SapphireTest
+class ExternalLinksTest extends FunctionalTest
 {
 
     protected static $fixture_file = 'ExternalLinksTest.yml';
@@ -124,5 +124,30 @@ class ExternalLinksTest extends SapphireTest
 
         // Ensure report does not list the link associated with an archived page
         $this->assertEquals(3, BrokenExternalLinksReport::create()->sourceRecords()->count());
+    }
+
+    public function provideGetJobStatus(): array
+    {
+        return [
+            'ADMIN - valid permission' => ['ADMIN', 200],
+            'CMS_ACCESS_CMSMain - valid permission' => ['CMS_ACCESS_CMSMain', 200],
+            'VIEW_SITE - not enough permission' => ['VIEW_SITE', 403],
+        ];
+    }
+
+    /**
+     * @dataProvider provideGetJobStatus
+     */
+    public function testGetJobStatus(
+        string $permission,
+        int $expectedResponseCode
+    ): void {
+        $this->logInWithPermission($permission);
+
+        $response = $this->get('admin/externallinks/start', null, ['Accept' => 'application/json']);
+        $this->assertEquals($expectedResponseCode, $response->getStatusCode());
+
+        $response = $this->get('admin/externallinks/getJobStatus', null, ['Accept' => 'application/json']);
+        $this->assertEquals($expectedResponseCode, $response->getStatusCode());
     }
 }
