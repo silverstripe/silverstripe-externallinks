@@ -34,11 +34,8 @@
             self.setReloadContent(true);
             self.poll();
           },
-          error(e) {
-            if (typeof console !== 'undefined') {
-              // eslint-disable-next-line no-console
-              console.error(e);
-            }
+          error() {
+            self.buttonReset();
           }
         });
       },
@@ -141,11 +138,7 @@
               $('.external-links-report__create-report').poll();
             }, 1000));
           },
-          error(e) {
-            if (typeof console !== 'undefined') {
-              // eslint-disable-next-line no-console
-              console.error(e);
-            }
+          error() {
             self.buttonReset();
           }
         });

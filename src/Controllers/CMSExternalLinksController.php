@@ -8,6 +8,7 @@ use SilverStripe\ExternalLinks\Tasks\CheckExternalLinksTask;
 use SilverStripe\Control\Controller;
 use Symbiote\QueuedJobs\Services\QueuedJobService;
 use SilverStripe\Control\Middleware\HTTPCacheControlMiddleware;
+use SilverStripe\Security\Permission;
 
 class CMSExternalLinksController extends Controller
 {
@@ -24,6 +25,9 @@ class CMSExternalLinksController extends Controller
      */
     public function getJobStatus()
     {
+        if (!Permission::check('CMS_ACCESS_CMSMain')) {
+            return $this->httpError(403, 'You do not have permission to access this resource');
+        }
         // Set headers
         HTTPCacheControlMiddleware::singleton()->setMaxAge(0);
         $this->response
@@ -49,6 +53,9 @@ class CMSExternalLinksController extends Controller
      */
     public function start()
     {
+        if (!Permission::check('CMS_ACCESS_CMSMain')) {
+            return $this->httpError(403, 'You do not have permission to access this resource');
+        }
         // return if the a job is already running
         $status = BrokenExternalPageTrackStatus::get_latest();
         if ($status && $status->Status == 'Running') {
