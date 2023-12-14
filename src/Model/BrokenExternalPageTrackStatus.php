@@ -10,10 +10,10 @@ use SilverStripe\ORM\DataObject;
 /**
  * Represents the status of a track run
  *
- * @method DataList TrackedPages()
- * @method DataList BrokenLinks()
  * @property int $TotalPages Get total pages count
  * @property int $CompletedPages Get completed pages count
+ * @method SilverStripe\ORM\HasManyList<BrokenExternalLink> BrokenLinks()
+ * @method SilverStripe\ORM\HasManyList<BrokenExternalPageTrack> TrackedPages()
  */
 class BrokenExternalPageTrackStatus extends DataObject implements i18nEntityProvider
 {
