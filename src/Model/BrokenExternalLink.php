@@ -14,8 +14,8 @@ use SilverStripe\Security\Security;
  *
  * @property string Link
  * @property int HTTPCode
- * @method BrokenExternalPageTrack Track()
  * @method BrokenExternalPageTrackStatus Status()
+ * @method BrokenExternalPageTrack Track()
  */
 class BrokenExternalLink extends DataObject
 {
