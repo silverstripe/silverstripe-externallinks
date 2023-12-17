@@ -10,6 +10,9 @@ use SilverStripe\ORM\DataObject;
 
 /**
  * Represents a track for a single page
+ * @method SilverStripe\ORM\HasManyList<BrokenExternalLink> BrokenLinks()
+ * @method SiteTree Page()
+ * @method BrokenExternalPageTrackStatus Status()
  */
 class BrokenExternalPageTrack extends DataObject
 {
