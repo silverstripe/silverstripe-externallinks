@@ -61,7 +61,7 @@ class BrokenExternalPageTrackStatus extends DataObject implements i18nEntityProv
     /**
      * Gets the list of Pages yet to be checked
      *
-     * @return DataList
+     * @return DataList<SiteTree>|void
      */
     public function getIncompletePageList()
     {
@@ -77,7 +77,7 @@ class BrokenExternalPageTrackStatus extends DataObject implements i18nEntityProv
     /**
      * Get the list of incomplete BrokenExternalPageTrack
      *
-     * @return DataList
+     * @return DataList<BrokenExternalPageTrack>
      */
     public function getIncompleteTracks()
     {
