@@ -6,14 +6,15 @@ use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\i18n\i18nEntityProvider;
 use SilverStripe\Versioned\Versioned;
 use SilverStripe\ORM\DataObject;
+use SilverStripe\ORM\HasManyList;
 
 /**
  * Represents the status of a track run
  *
  * @property int $TotalPages Get total pages count
  * @property int $CompletedPages Get completed pages count
- * @method SilverStripe\ORM\HasManyList<BrokenExternalLink> BrokenLinks()
- * @method SilverStripe\ORM\HasManyList<BrokenExternalPageTrack> TrackedPages()
+ * @method HasManyList<BrokenExternalLink> BrokenLinks()
+ * @method HasManyList<BrokenExternalPageTrack> TrackedPages()
  */
 class BrokenExternalPageTrackStatus extends DataObject implements i18nEntityProvider
 {
