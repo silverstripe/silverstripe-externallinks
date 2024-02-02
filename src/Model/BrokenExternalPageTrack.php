@@ -7,11 +7,11 @@ use SilverStripe\ExternalLinks\Model\BrokenExternalPageTrackStatus;
 use SilverStripe\ExternalLinks\Model\BrokenExternalLink;
 use SilverStripe\Versioned\Versioned;
 use SilverStripe\ORM\DataObject;
+use SilverStripe\ORM\HasManyList;
 
 /**
  * Represents a track for a single page
- * @method SilverStripe\ORM\HasManyList<BrokenExternalLink> BrokenLinks()
- * @method SiteTree Page()
+ * @method HasManyList<BrokenExternalLink> BrokenLinks()
  * @method BrokenExternalPageTrackStatus Status()
  */
 class BrokenExternalPageTrack extends DataObject
