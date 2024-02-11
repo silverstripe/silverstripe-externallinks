@@ -1,0 +1,44 @@
+sk:
+  SilverStripe\ExternalLinks\Jobs\CheckExternalLinksJob:
+    TITLE: 'Kontrola externých nefunkčných odkazov'
+  SilverStripe\ExternalLinks\Model\BrokenExternalLink:
+    NOTAVAILABLE: 'Server nedostupný'
+    PLURALNAME: 'Nefunkčné externé odkazy'
+    PLURALS:
+      few: '{count} nefunkčné externé odkazy'
+      many: '{count} nefunkčných externých odkazov'
+      one: 'Nefunkčný externý odkaz'
+      other: '{count} nefunkčných externých odkazov'
+    SINGULARNAME: 'Nefunkčný externý odkaz'
+    UNKNOWNRESPONSE: 'Neznámy kód odpovede'
+    db_HTTPCode: 'HTTP kód'
+    db_Link: Odkaz
+    has_one_Status: Stav
+    has_one_Track: Stopa
+  SilverStripe\ExternalLinks\Model\BrokenExternalPageTrack:
+    PLURALNAME: 'Nefunkčné externé stopy stránok'
+    PLURALS:
+      few: '{count} nefunkčné externé stopy stránky'
+      many: '{count} nefunkčných externých stôp stránky'
+      one: 'Nefunkčná externá stopa stránky'
+      other: '{count} nefunkčných externých stôp stránky'
+    SINGULARNAME: 'Nefunkčná externá stopa stránky'
+    db_Processed: Spracované
+    has_many_BrokenLinks: 'Nefunkčné odkazy'
+    has_one_Page: Stránka
+    has_one_Status: Stav
+  SilverStripe\ExternalLinks\Model\BrokenExternalPageTrackStatus:
+    PLURALNAME: 'Stavy nefunkčných externých stôp stránky'
+    PLURALS:
+      few: '{count} stavy nefunkčných externých stôp stránky'
+      many: '{count} stavov nefunkčných externých stôp stránky'
+      one: 'Stav nefunkčnej externej stopy stránky'
+      other: '{count} stavov nefunkčných externých stôp stránky'
+    SINGULARNAME: 'Stav nefunkčnej externej stopy stránky'
+    db_JobInfo: 'Informácie o úlohe'
+    db_Status: Stav
+    has_many_BrokenLinks: 'Nefunkčné odkazy'
+    has_many_TrackedPages: 'Sledované stránky'
+  SilverStripe\ExternalLinks\Reports\BrokenExternalLinksReport:
+    EXTERNALBROKENLINKS: 'Správa o externých nefunkčných odkazoch'
+    RUNREPORT: 'Vytvoriť novú správu'
