@@ -37,7 +37,7 @@ class BrokenExternalPageTrackStatus extends DataObject implements i18nEntityProv
      */
     public static function get_latest()
     {
-        return self::get()
+        return BrokenExternalPageTrackStatus::get()
             ->sort('ID', 'DESC')
             ->first();
     }
@@ -118,13 +118,13 @@ class BrokenExternalPageTrackStatus extends DataObject implements i18nEntityProv
     public static function get_or_create()
     {
         // Check the current status
-        $status = self::get_latest();
+        $status = BrokenExternalPageTrackStatus::get_latest();
         if ($status && $status->Status == 'Running') {
             $status->updateStatus();
             return $status;
         }
 
-        return self::create_status();
+        return BrokenExternalPageTrackStatus::create_status();
     }
 
     /**
@@ -135,7 +135,7 @@ class BrokenExternalPageTrackStatus extends DataObject implements i18nEntityProv
     public static function create_status()
     {
         // If the script is to be started create a new status
-        $status = self::create();
+        $status = BrokenExternalPageTrackStatus::create();
         $status->updateJobInfo('Creating new tracking object');
 
         // Setup all pages to test
