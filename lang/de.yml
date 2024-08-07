@@ -9,6 +9,14 @@ de:
       other: '{count} defekte externe Links'
     SINGULARNAME: 'Defekter externer Link'
     UNKNOWNRESPONSE: 'Unbekannter Antwortcode'
+    db_HTTPCode: 'HTTP Code'
+    db_Link: Verlinkung
+    has_one_Track: Verfolgen
+  SilverStripe\ExternalLinks\Model\BrokenExternalPageTrack:
+    has_many_BrokenLinks: 'Defekte Verlinkungen'
+    has_one_Page: Seite
+  SilverStripe\ExternalLinks\Model\BrokenExternalPageTrackStatus:
+    has_many_BrokenLinks: 'Defekte Verlinkungen'
   SilverStripe\ExternalLinks\Reports\BrokenExternalLinksReport:
     EXTERNALBROKENLINKS: 'Defekte externe Links Report'
     RUNREPORT: 'Generiere neuen Bericht'
