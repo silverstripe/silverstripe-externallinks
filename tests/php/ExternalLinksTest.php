@@ -3,7 +3,6 @@
 namespace SilverStripe\ExternalLinks\Tests;
 
 use SilverStripe\Core\Injector\Injector;
-use SilverStripe\Dev\Deprecation;
 use SilverStripe\Dev\FunctionalTest;
 use SilverStripe\ExternalLinks\Model\BrokenExternalPageTrackStatus;
 use SilverStripe\ExternalLinks\Reports\BrokenExternalLinksReport;
@@ -11,6 +10,7 @@ use SilverStripe\ExternalLinks\Tasks\CheckExternalLinksTask;
 use SilverStripe\ExternalLinks\Tasks\LinkChecker;
 use SilverStripe\ExternalLinks\Tests\Stubs\ExternalLinksTestPage;
 use SilverStripe\ExternalLinks\Tests\Stubs\PretendLinkChecker;
+use SilverStripe\PolyExecution\PolyOutput;
 use SilverStripe\i18n\i18n;
 use SilverStripe\Reports\Report;
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -37,8 +37,7 @@ class ExternalLinksTest extends FunctionalTest
     {
         // Run link checker
         $task = CheckExternalLinksTask::create();
-        Deprecation::withSuppressedNotice(fn() => $task->setSilent(true)); // Be quiet during the test!
-        $task->runLinksCheck();
+        $task->runLinksCheck(PolyOutput::create(PolyOutput::FORMAT_ANSI, PolyOutput::VERBOSITY_QUIET));
 
         // Get all links checked
         $status = BrokenExternalPageTrackStatus::get_latest();
@@ -114,8 +113,7 @@ class ExternalLinksTest extends FunctionalTest
     {
         // Run link checker
         $task = CheckExternalLinksTask::create();
-        Deprecation::withSuppressedNotice(fn() => $task->setSilent(true)); // Be quiet during the test!
-        $task->runLinksCheck();
+        $task->runLinksCheck(PolyOutput::create(PolyOutput::FORMAT_ANSI, PolyOutput::VERBOSITY_QUIET));
 
         // Ensure report lists all broken links
         $this->assertEquals(4, BrokenExternalLinksReport::create()->sourceRecords()->count());
