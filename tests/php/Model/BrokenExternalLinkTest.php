@@ -4,12 +4,11 @@ namespace SilverStripe\ExternalLinks\Tests\Model;
 
 use SilverStripe\Dev\SapphireTest;
 use SilverStripe\ExternalLinks\Model\BrokenExternalLink;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 class BrokenExternalLinkTest extends SapphireTest
 {
-    /**
-     * @dataProvider httpCodeProvider
-     */
+    #[DataProvider('httpCodeProvider')]
     public function testGetHTTPCodeDescription(int $httpCode, string $expected)
     {
         $link = new BrokenExternalLink();
@@ -17,7 +16,7 @@ class BrokenExternalLinkTest extends SapphireTest
         $this->assertSame($expected, $link->getHTTPCodeDescription());
     }
     
-    public function httpCodeProvider(): array
+    public static function httpCodeProvider(): array
     {
         return [
             [200, '200 (OK)'],
@@ -28,7 +27,7 @@ class BrokenExternalLinkTest extends SapphireTest
         ];
     }
 
-    public function permissionProvider(): array
+    public static function permissionProvider(): array
     {
         return [
             ['admin', 'ADMIN'],
@@ -37,9 +36,7 @@ class BrokenExternalLinkTest extends SapphireTest
         ];
     }
 
-    /**
-     * @dataProvider permissionProvider
-     */
+    #[DataProvider('permissionProvider')]
     public function testCanViewReport(string $user, string $permission)
     {
         $this->logOut();
