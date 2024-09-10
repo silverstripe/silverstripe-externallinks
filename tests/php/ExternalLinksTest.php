@@ -3,6 +3,7 @@
 namespace SilverStripe\ExternalLinks\Tests;
 
 use SilverStripe\Core\Injector\Injector;
+use SilverStripe\Dev\Deprecation;
 use SilverStripe\Dev\FunctionalTest;
 use SilverStripe\ExternalLinks\Model\BrokenExternalPageTrackStatus;
 use SilverStripe\ExternalLinks\Reports\BrokenExternalLinksReport;
@@ -35,7 +36,7 @@ class ExternalLinksTest extends FunctionalTest
     {
         // Run link checker
         $task = CheckExternalLinksTask::create();
-        $task->setSilent(true); // Be quiet during the test!
+        Deprecation::withNoReplacement(fn() => $task->setSilent(true)); // Be quiet during the test!
         $task->runLinksCheck();
 
         // Get all links checked
@@ -112,7 +113,7 @@ class ExternalLinksTest extends FunctionalTest
     {
         // Run link checker
         $task = CheckExternalLinksTask::create();
-        $task->setSilent(true); // Be quiet during the test!
+        Deprecation::withNoReplacement(fn() => $task->setSilent(true)); // Be quiet during the test!
         $task->runLinksCheck();
 
         // Ensure report lists all broken links
