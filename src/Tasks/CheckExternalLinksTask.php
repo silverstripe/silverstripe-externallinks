@@ -187,7 +187,7 @@ class CheckExternalLinksTask extends BuildTask
 
             // Check value of html area
             $page = $pageTrack->Page();
-            Deprecation::withNoReplacement(fn() => $this->log("Checking {$page->Title}"));
+            Deprecation::withSuppressedNotice(fn() => $this->log("Checking {$page->Title}"));
             $htmlValue = Injector::inst()->create(HTMLValue::class, $page->Content);
             if (!$htmlValue->isValid()) {
                 continue;
@@ -205,7 +205,7 @@ class CheckExternalLinksTask extends BuildTask
             try {
                 $page->write();
             } catch (ValidationException $ex) {
-                Deprecation::withNoReplacement(function () use ($page, $ex) {
+                Deprecation::withSuppressedNotice(function () use ($page, $ex) {
                     $this->log("Exception caught for {$page->Title}, skipping. Message: " . $ex->getMessage());
                 });
                 continue;
@@ -213,7 +213,7 @@ class CheckExternalLinksTask extends BuildTask
 
             // Once all links have been created for this page update HasBrokenLinks
             $count = $pageTrack->BrokenLinks()->count();
-            Deprecation::withNoReplacement(fn() => $this->log("Found {$count} broken links"));
+            Deprecation::withSuppressedNotice(fn() => $this->log("Found {$count} broken links"));
             if ($count) {
                 $siteTreeTable = DataObject::getSchema()->tableName(SiteTree::class);
                 // Bypass the ORM as syncLinkTracking does not allow you to update HasBrokenLink to true
