@@ -8,6 +8,7 @@ use SilverStripe\Core\Config\Config;
 use SilverStripe\Core\Injector\Injector;
 use SilverStripe\Dev\BuildTask;
 use SilverStripe\Dev\Debug;
+use SilverStripe\Dev\Deprecation;
 use SilverStripe\ExternalLinks\Model\BrokenExternalLink;
 use SilverStripe\ExternalLinks\Model\BrokenExternalPageTrack;
 use SilverStripe\ExternalLinks\Model\BrokenExternalPageTrackStatus;
@@ -36,6 +37,7 @@ class CheckExternalLinksTask extends BuildTask
 
     /**
      * @var bool
+     * @deprecated 3.4.0 Will be replaced with new $output parameter in the run() method
      */
     protected $silent = false;
 
@@ -54,9 +56,11 @@ class CheckExternalLinksTask extends BuildTask
      * Log a message
      *
      * @param string $message
+     * @deprecated 3.4.0 Will be replaced with new $output parameter in the run() method
      */
     protected function log($message)
     {
+        Deprecation::notice('3.4.0', 'Will be replaced with new $output parameter in the run() method');
         if (!$this->silent) {
             Debug::message($message);
         }
@@ -70,9 +74,11 @@ class CheckExternalLinksTask extends BuildTask
      * Turn on or off message output
      *
      * @param bool $silent
+     * @deprecated 3.4.0 Will be replaced with new $output parameter in the run() method
      */
     public function setSilent($silent)
     {
+        Deprecation::notice('3.4.0', 'Will be replaced with new $output parameter in the run() method');
         $this->silent = $silent;
     }
 
@@ -181,7 +187,7 @@ class CheckExternalLinksTask extends BuildTask
 
             // Check value of html area
             $page = $pageTrack->Page();
-            $this->log("Checking {$page->Title}");
+            Deprecation::withNoReplacement(fn() => $this->log("Checking {$page->Title}"));
             $htmlValue = Injector::inst()->create(HTMLValue::class, $page->Content);
             if (!$htmlValue->isValid()) {
                 continue;
@@ -199,13 +205,15 @@ class CheckExternalLinksTask extends BuildTask
             try {
                 $page->write();
             } catch (ValidationException $ex) {
-                $this->log("Exception caught for {$page->Title}, skipping. Message: " . $ex->getMessage());
+                Deprecation::withNoReplacement(function () use ($page, $ex) {
+                    $this->log("Exception caught for {$page->Title}, skipping. Message: " . $ex->getMessage());
+                });
                 continue;
             }
 
             // Once all links have been created for this page update HasBrokenLinks
             $count = $pageTrack->BrokenLinks()->count();
-            $this->log("Found {$count} broken links");
+            Deprecation::withNoReplacement(fn() => $this->log("Found {$count} broken links"));
             if ($count) {
                 $siteTreeTable = DataObject::getSchema()->tableName(SiteTree::class);
                 // Bypass the ORM as syncLinkTracking does not allow you to update HasBrokenLink to true
