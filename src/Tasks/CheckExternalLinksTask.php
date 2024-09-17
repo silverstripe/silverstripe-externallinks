@@ -15,7 +15,7 @@ use SilverStripe\ExternalLinks\Model\BrokenExternalPageTrackStatus;
 use SilverStripe\ExternalLinks\Tasks\LinkChecker;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\DB;
-use SilverStripe\ORM\ValidationException;
+use SilverStripe\Core\Validation\ValidationException;
 use SilverStripe\View\Parsers\HTMLValue;
 
 class CheckExternalLinksTask extends BuildTask
