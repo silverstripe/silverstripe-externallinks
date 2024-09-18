@@ -13,6 +13,7 @@ use SilverStripe\ExternalLinks\Tests\Stubs\ExternalLinksTestPage;
 use SilverStripe\ExternalLinks\Tests\Stubs\PretendLinkChecker;
 use SilverStripe\i18n\i18n;
 use SilverStripe\Reports\Report;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 class ExternalLinksTest extends FunctionalTest
 {
@@ -127,7 +128,7 @@ class ExternalLinksTest extends FunctionalTest
         $this->assertEquals(3, BrokenExternalLinksReport::create()->sourceRecords()->count());
     }
 
-    public function provideGetJobStatus(): array
+    public static function provideGetJobStatus(): array
     {
         return [
             'ADMIN - valid permission' => ['ADMIN', 200],
@@ -136,9 +137,7 @@ class ExternalLinksTest extends FunctionalTest
         ];
     }
 
-    /**
-     * @dataProvider provideGetJobStatus
-     */
+    #[DataProvider('provideGetJobStatus')]
     public function testGetJobStatus(
         string $permission,
         int $expectedResponseCode
