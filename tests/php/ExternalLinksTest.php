@@ -37,7 +37,7 @@ class ExternalLinksTest extends FunctionalTest
     {
         // Run link checker
         $task = CheckExternalLinksTask::create();
-        Deprecation::withNoReplacement(fn() => $task->setSilent(true)); // Be quiet during the test!
+        Deprecation::withSuppressedNotice(fn() => $task->setSilent(true)); // Be quiet during the test!
         $task->runLinksCheck();
 
         // Get all links checked
@@ -114,7 +114,7 @@ class ExternalLinksTest extends FunctionalTest
     {
         // Run link checker
         $task = CheckExternalLinksTask::create();
-        Deprecation::withNoReplacement(fn() => $task->setSilent(true)); // Be quiet during the test!
+        Deprecation::withSuppressedNotice(fn() => $task->setSilent(true)); // Be quiet during the test!
         $task->runLinksCheck();
 
         // Ensure report lists all broken links
