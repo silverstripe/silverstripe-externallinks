@@ -6,7 +6,7 @@ use SilverStripe\Core\Convert;
 use SilverStripe\ExternalLinks\Model\BrokenExternalPageTrackStatus;
 use SilverStripe\Forms\LiteralField;
 use SilverStripe\Forms\FormAction;
-use SilverStripe\ORM\ArrayList;
+use SilverStripe\Model\List\ArrayList;
 use SilverStripe\Reports\Report;
 use SilverStripe\View\Requirements;
 
