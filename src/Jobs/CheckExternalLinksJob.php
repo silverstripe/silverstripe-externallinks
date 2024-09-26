@@ -5,6 +5,7 @@ namespace SilverStripe\ExternalLinks\Jobs;
 use Symbiote\QueuedJobs\Services\AbstractQueuedJob;
 use Symbiote\QueuedJobs\Services\QueuedJob;
 use SilverStripe\ExternalLinks\Tasks\CheckExternalLinksTask;
+use SilverStripe\PolyExecution\PolyOutput;
 
 if (!class_exists(AbstractQueuedJob::class)) {
     return;
@@ -38,7 +39,7 @@ class CheckExternalLinksJob extends AbstractQueuedJob implements QueuedJob
     public function process()
     {
         $task = CheckExternalLinksTask::create();
-        $track = $task->runLinksCheck(1);
+        $track = $task->runLinksCheck(PolyOutput::create(PolyOutput::FORMAT_ANSI), 1);
         $this->currentStep = $track->CompletedPages;
         $this->totalSteps = $track->TotalPages;
         $this->isComplete = $track->Status === 'Completed';

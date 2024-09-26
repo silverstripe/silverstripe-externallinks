@@ -8,11 +8,11 @@ use SilverStripe\ExternalLinks\Tasks\CheckExternalLinksTask;
 use SilverStripe\Control\Controller;
 use Symbiote\QueuedJobs\Services\QueuedJobService;
 use SilverStripe\Control\Middleware\HTTPCacheControlMiddleware;
+use SilverStripe\PolyExecution\PolyOutput;
 use SilverStripe\Security\Permission;
 
 class CMSExternalLinksController extends Controller
 {
-
     private static $allowed_actions = [
         'getJobStatus',
         'start'
@@ -47,7 +47,6 @@ class CMSExternalLinksController extends Controller
         }
     }
 
-
     /**
      * Starts a broken external link check
      */
@@ -70,7 +69,7 @@ class CMSExternalLinksController extends Controller
             singleton(QueuedJobService::class)->queueJob($checkLinks);
         } else {
             $task = CheckExternalLinksTask::create();
-            $task->runLinksCheck();
+            $task->runLinksCheck(PolyOutput::create(PolyOutput::FORMAT_HTML));
         }
     }
 }
