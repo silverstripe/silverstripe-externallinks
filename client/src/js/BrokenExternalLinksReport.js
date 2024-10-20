@@ -99,7 +99,7 @@
           async: true,
           success(data) {
             // No report, so let user create one
-            if (!data) {
+            if (!data || (typeof data === 'object' && data.length < 1)) {
               self.buttonReset();
               return;
             }

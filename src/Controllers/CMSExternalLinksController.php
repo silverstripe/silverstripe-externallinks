@@ -2,17 +2,22 @@
 
 namespace SilverStripe\ExternalLinks\Controllers;
 
+use SilverStripe\Admin\AdminController;
+use SilverStripe\Control\HTTPResponse;
 use SilverStripe\ExternalLinks\Model\BrokenExternalPageTrackStatus;
 use SilverStripe\ExternalLinks\Jobs\CheckExternalLinksJob;
 use SilverStripe\ExternalLinks\Tasks\CheckExternalLinksTask;
-use SilverStripe\Control\Controller;
 use Symbiote\QueuedJobs\Services\QueuedJobService;
-use SilverStripe\Control\Middleware\HTTPCacheControlMiddleware;
 use SilverStripe\PolyExecution\PolyOutput;
-use SilverStripe\Security\Permission;
 
-class CMSExternalLinksController extends Controller
+class CMSExternalLinksController extends AdminController
 {
+    private static ?string $url_segment = 'externallinks';
+
+    private static string|array $required_permission_codes = [
+        'CMS_ACCESS_CMSMain',
+    ];
+
     private static $allowed_actions = [
         'getJobStatus',
         'start'
@@ -20,45 +25,31 @@ class CMSExternalLinksController extends Controller
 
     /**
      * Respond to Ajax requests for info on a running job
-     *
-     * @return string JSON string detailing status of the job
      */
-    public function getJobStatus()
+    public function getJobStatus(): HTTPResponse
     {
-        if (!Permission::check('CMS_ACCESS_CMSMain')) {
-            return $this->httpError(403, 'You do not have permission to access this resource');
-        }
-        // Set headers
-        HTTPCacheControlMiddleware::singleton()->setMaxAge(0);
-        $this->response
-            ->addHeader('Content-Type', 'application/json')
-            ->addHeader('Content-Encoding', 'UTF-8')
-            ->addHeader('X-Content-Type-Options', 'nosniff');
-
-        // Format status
+        $this->getResponse()->addHeader('X-Content-Type-Options', 'nosniff');
         $track = BrokenExternalPageTrackStatus::get_latest();
         if ($track) {
-            return json_encode([
+            return $this->jsonSuccess(200, [
                 'TrackID' => $track->ID,
                 'Status' => $track->Status,
                 'Completed' => $track->getCompletedPages(),
                 'Total' => $track->getTotalPages()
             ]);
         }
+        return $this->jsonSuccess(200, []);
     }
 
     /**
      * Starts a broken external link check
      */
-    public function start()
+    public function start(): HTTPResponse
     {
-        if (!Permission::check('CMS_ACCESS_CMSMain')) {
-            return $this->httpError(403, 'You do not have permission to access this resource');
-        }
         // return if the a job is already running
         $status = BrokenExternalPageTrackStatus::get_latest();
         if ($status && $status->Status == 'Running') {
-            return;
+            return $this->jsonSuccess(200, []);
         }
 
         // Create a new job
@@ -71,5 +62,6 @@ class CMSExternalLinksController extends Controller
             $task = CheckExternalLinksTask::create();
             $task->runLinksCheck(PolyOutput::create(PolyOutput::FORMAT_HTML));
         }
+        return $this->jsonSuccess(200, []);
     }
 }
