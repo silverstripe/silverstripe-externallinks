@@ -4,7 +4,7 @@ namespace SilverStripe\ExternalLinks\Model;
 
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\i18n\i18nEntityProvider;
-use SilverStripe\Versioned\Versioned;
+use SilverStripe\Versioned\Mode\Versioned;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\HasManyList;
 
