@@ -37,7 +37,7 @@ class CheckExternalLinksTask extends BuildTask
 
     /**
      * @var bool
-     * @deprecated 3.4.0 Will be replaced with new $output parameter in the run() method
+     * @deprecated 3.4.0 Will be replaced with new $output parameter in the run() method in a future major release
      */
     protected $silent = false;
 
@@ -56,11 +56,14 @@ class CheckExternalLinksTask extends BuildTask
      * Log a message
      *
      * @param string $message
-     * @deprecated 3.4.0 Will be replaced with new $output parameter in the run() method
+     * @deprecated 3.4.0 Will be replaced with new $output parameter in the run() method in a future major release
      */
     protected function log($message)
     {
-        Deprecation::notice('3.4.0', 'Will be replaced with new $output parameter in the run() method');
+        Deprecation::notice(
+            '3.4.0',
+            'Will be replaced with new $output parameter in the run() method in a future major release'
+        );
         if (!$this->silent) {
             Debug::message($message);
         }
@@ -74,11 +77,14 @@ class CheckExternalLinksTask extends BuildTask
      * Turn on or off message output
      *
      * @param bool $silent
-     * @deprecated 3.4.0 Will be replaced with new $output parameter in the run() method
+     * @deprecated 3.4.0 Will be replaced with new $output parameter in the run() method in a future major release
      */
     public function setSilent($silent)
     {
-        Deprecation::notice('3.4.0', 'Will be replaced with new $output parameter in the run() method');
+        Deprecation::notice(
+            '3.4.0',
+            'Will be replaced with new $output parameter in the run() method in a future major release'
+        );
         $this->silent = $silent;
     }
 
